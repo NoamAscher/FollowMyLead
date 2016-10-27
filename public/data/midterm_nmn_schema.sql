@@ -1,0 +1,54 @@
+DROP TABLE IF EXISTS favourite_maps;
+DROP TABLE IF EXISTS follow_pairs;
+DROP TABLE IF EXISTS map_locations;
+DROP TABLE IF EXISTS locations;
+DROP TABLE IF EXISTS maps;
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (
+  id BIGSERIAL PRIMARY KEY,
+  handle VARCHAR(25),
+  email VARCHAR(50),
+  password VARCHAR(50),
+  bio VARCHAR(100),
+  avatar VARCHAR(50)
+);
+
+CREATE TABLE locations (
+  id BIGSERIAL PRIMARY KEY,
+  name VARCHAR(75),
+  summary VARCHAR(100),
+  latitude DOUBLE PRECISION,
+  longitude DOUBLE PRECISION,
+  category VARCHAR(25),
+  url VARCHAR(50),
+  img VARCHAR(50),
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  date_created DATE
+);
+
+CREATE TABLE maps (
+  id BIGSERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  date_created DATE
+);
+
+CREATE TABLE map_locations (
+  id BIGSERIAL PRIMARY KEY,
+  location_id INTEGER REFERENCES locations(id) ON DELETE CASCADE,
+  map_id INTEGER REFERENCES maps(id) ON DELETE CASCADE,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE favourite_maps (
+  id BIGSERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  map_id INTEGER REFERENCES maps(id) ON DELETE CASCADE
+);
+
+CREATE TABLE follow_pairs (
+  id BIGSERIAL PRIMARY KEY,
+  follower_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  following_id INTEGER REFERENCES users(id) ON DELETE CASCADE
+);
+
