@@ -96,7 +96,7 @@ INSERT INTO maps (id, user_id, name, date_created)
 INSERT INTO maps (id, user_id, name, date_created)
   VALUES(7, 1, 'Forrest''s Other Map', '2016.10.06');
 
-
+/*
 INSERT INTO map_locations (id, location_id, map_id, user_id)
   VALUES (1, 1, 1, 1);
 INSERT INTO map_locations (id, location_id, map_id, user_id)
@@ -111,6 +111,7 @@ INSERT INTO map_locations (id, location_id, map_id, user_id)
   VALUES (6, 4, 3, 2);
 INSERT INTO map_locations (id, location_id, map_id, user_id)
   VALUES (7, 5, 4, 2);
+*/
 
 
 INSERT INTO favourite_maps (id, user_id, map_id)

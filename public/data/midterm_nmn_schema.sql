@@ -14,6 +14,13 @@ CREATE TABLE users (
   avatar VARCHAR(50)
 );
 
+CREATE TABLE maps (
+  id BIGSERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  name VARCHAR(50),
+  date_created DATE
+);
+
 CREATE TABLE locations (
   id BIGSERIAL PRIMARY KEY,
   name VARCHAR(75),
@@ -24,22 +31,20 @@ CREATE TABLE locations (
   url VARCHAR(50),
   img VARCHAR(50),
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  map_id INTEGER REFERENCES maps(id) ON DELETE CASCADE,
   date_created DATE
 );
 
-CREATE TABLE maps (
-  id BIGSERIAL PRIMARY KEY,
-  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  name VARCHAR(50),
-  date_created DATE
-);
 
+
+/*
 CREATE TABLE map_locations (
   id BIGSERIAL PRIMARY KEY,
   location_id INTEGER REFERENCES locations(id) ON DELETE CASCADE,
   map_id INTEGER REFERENCES maps(id) ON DELETE CASCADE,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
+*/
 
 CREATE TABLE favourite_maps (
   id BIGSERIAL PRIMARY KEY,

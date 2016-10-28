@@ -106,8 +106,16 @@ INSERT INTO map_locations (id, location_id, map_id, user_id)
 
 
 /* 10. delete a location from a map:  */
-/* Given: values (8, 5, 1, 1) for (id, location_id, map_id, user_id);
-/* note that location_id = 5; then: */
+
+DELETE * FROM locations
+  WHERE id = 1;
+
+
+
+/* The rest of this is deprecated along with map_locations
+
+Given: values (8, 5, 1, 1) for (id, location_id, map_id, user_id);
+note that location_id = 5; then:
 
 DELETE FROM map_locations
   WHERE id = 8;
@@ -138,5 +146,5 @@ where RevCode = '3'
 
 /*
 
-
+*/
 
