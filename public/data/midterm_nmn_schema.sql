@@ -30,6 +30,7 @@ CREATE TABLE locations (
 CREATE TABLE maps (
   id BIGSERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  name VARCHAR(50),
   date_created DATE
 );
 

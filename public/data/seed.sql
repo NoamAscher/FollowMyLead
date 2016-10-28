@@ -40,7 +40,7 @@ INSERT INTO locations (id, name, summary, latitude, longitude, category, url, im
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, date_created)
   VALUES (2, 'Central United Methodist Church, Spokane, Washington',
-    'Horrible food! Mediocre service and horrible food!',
+    'I cant believe this place has 3 stars! I gave it one because theres no -1.',
     '47.653379', '-117.421129', 'sightseeing', 'www.centralMethodist.com', '/images/locations/centralUnited.jpg',
     3, '2016.05.02');
 
@@ -52,7 +52,7 @@ INSERT INTO locations (id, name, summary, latitude, longitude, category, url, im
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, date_created)
   VALUES (4, 'Waterfront Station',
-    'Horrible food! Mediocre service and horrible food!',
+    'I cant believe this place has 3 stars! I gave it one because theres no -1.',
     '49.2849163', '-123.1157802', 'transportation', 'www.waterfront.van', '/images/locations/waterfront.jpg',
     2, '2016.08.30');
 
@@ -64,7 +64,7 @@ INSERT INTO locations (id, name, summary, latitude, longitude, category, url, im
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, date_created)
   VALUES (6, 'Waterfront Station',
-    'Horrible food! Mediocre service and horrible food!',
+    'I cant believe this place has 3 stars! I gave it one because theres no -1.',
     '49.2849163', '-123.1157802', 'transportation', 'www.waterfront.van', '/images/locations/waterfront.jpg',
     2, '2016.08.30');
 
@@ -75,27 +75,26 @@ INSERT INTO locations (id, name, summary, latitude, longitude, category, url, im
     2, '2016.08.30');
 
 
+INSERT INTO maps (id, user_id, name, date_created)
+  VALUES(1, 1, 'Boxa Chocolata', '2016.10.03');
 
-INSERT INTO maps (id, user_id, date_created)
-  VALUES(1, 1, '2016.10.03');
+INSERT INTO maps (id, user_id, name, date_created)
+  VALUES(2, 2, 'Bill Murray''s Trials', '2016.10.03');
 
-INSERT INTO maps (id, user_id, date_created)
-  VALUES(2, 2, '2016.10.03');
+INSERT INTO maps (id, user_id, name, date_created)
+  VALUES(3, 2, 'Bill Murray''s Tribulations', '2016.10.03');
 
-INSERT INTO maps (id, user_id, date_created)
-  VALUES(3, 2, '2016.10.03');
+INSERT INTO maps (id, user_id, name, date_created)
+  VALUES(4, 3, 'The Struggle Is Real', '2016.10.03');
 
-INSERT INTO maps (id, user_id, date_created)
-  VALUES(4, 3, '2016.10.03');
+INSERT INTO maps (id, user_id, name, date_created)
+  VALUES(5, 4, 'Oh the Places I''ve Been', '2016.10.03');
 
-INSERT INTO maps (id, user_id, date_created)
-  VALUES(5, 4, '2016.10.03');
+INSERT INTO maps (id, user_id, name, date_created)
+  VALUES(6, 5, 'I lost a bet :(', '2016.10.04');
 
-INSERT INTO maps (id, user_id, date_created)
-  VALUES(6, 5, '2016.10.03');
-
-INSERT INTO maps (id, user_id, date_created)
-  VALUES(7, 1, '2016.10.03');
+INSERT INTO maps (id, user_id, name, date_created)
+  VALUES(7, 1, 'Forrest''s Other Map', '2016.10.06');
 
 
 INSERT INTO map_locations (id, location_id, map_id, user_id)
@@ -122,18 +121,69 @@ INSERT INTO favourite_maps (id, user_id, map_id)
   VALUES (3, 1, 5);
 INSERT INTO favourite_maps (id, user_id, map_id)
   VALUES (4, 1, 6);
+INSERT INTO favourite_maps (id, user_id, map_id)
+  VALUES (5, 2, 4);
+INSERT INTO favourite_maps (id, user_id, map_id)
+  VALUES (6, 2, 5);
+INSERT INTO favourite_maps (id, user_id, map_id)
+  VALUES (7, 3, 6);
+
+INSERT INTO favourite_maps (id, user_id, map_id)
+  VALUES (8, 4, 1);
+INSERT INTO favourite_maps (id, user_id, map_id)
+  VALUES (9, 4, 7);
+INSERT INTO favourite_maps (id, user_id, map_id)
+  VALUES (10, 6, 7);
 
 
 INSERT INTO follow_pairs (id, follower_id, following_id)
   VALUES (1, 1, 2);
 INSERT INTO follow_pairs (id, follower_id, following_id)
-  VALUES (2, 2, 1);
+  VALUES (2, 1, 3);
 INSERT INTO follow_pairs (id, follower_id, following_id)
-  VALUES (3, 1, 3);
+  VALUES (3, 1, 6);
 INSERT INTO follow_pairs (id, follower_id, following_id)
-  VALUES (4, 3, 4);
+  VALUES (4, 1, 7);
+
 INSERT INTO follow_pairs (id, follower_id, following_id)
-  VALUES (5, 4, 1);
+  VALUES (5, 2, 1);
 INSERT INTO follow_pairs (id, follower_id, following_id)
-  VALUES (6, 5, 2);
+  VALUES (6, 2, 5);
+INSERT INTO follow_pairs (id, follower_id, following_id)
+  VALUES (7, 2, 6);
+
+INSERT INTO follow_pairs (id, follower_id, following_id)
+  VALUES (8, 3, 2);
+INSERT INTO follow_pairs (id, follower_id, following_id)
+  VALUES (9, 3, 4);
+INSERT INTO follow_pairs (id, follower_id, following_id)
+  VALUES (10, 3, 7);
+
+INSERT INTO follow_pairs (id, follower_id, following_id)
+  VALUES (11, 4, 1);
+INSERT INTO follow_pairs (id, follower_id, following_id)
+  VALUES (12, 4, 3);
+
+INSERT INTO follow_pairs (id, follower_id, following_id)
+  VALUES (13, 5, 2);
+INSERT INTO follow_pairs (id, follower_id, following_id)
+  VALUES (14, 5, 3);
+INSERT INTO follow_pairs (id, follower_id, following_id)
+  VALUES (15, 5, 6);
+INSERT INTO follow_pairs (id, follower_id, following_id)
+  VALUES (16, 5, 7);
+
+INSERT INTO follow_pairs (id, follower_id, following_id)
+  VALUES (17, 6, 2);
+INSERT INTO follow_pairs (id, follower_id, following_id)
+  VALUES (18, 6, 7);
+
+INSERT INTO follow_pairs (id, follower_id, following_id)
+  VALUES (19, 7, 1);
+INSERT INTO follow_pairs (id, follower_id, following_id)
+  VALUES (20, 7, 3);
+INSERT INTO follow_pairs (id, follower_id, following_id)
+  VALUES (21, 7, 5);
+INSERT INTO follow_pairs (id, follower_id, following_id)
+  VALUES (22, 7, 6);
 
