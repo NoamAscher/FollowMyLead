@@ -1,0 +1,122 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+@media (min-width: 640px) {
+  .content-primary {
+    background: #ccc;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    top: 80px;
+    width: 38.2%;
+    font-family: 'Open Sans', sans-serif;
+  }
+    .container-fluid .content-secondary {
+      background: blue;
+      bottom: 0;
+      position: fixed;
+      right: 0;
+      top: 80px;
+      width: 61.8%; } }
+
+
+#nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 80px;
+  background-color: #2a5468;
+  color: #ffffff;
+  margin: auto;
+  padding: 0 2em;
+
+}
+
+  .header {
+    text-orientation: center;
+    line-height: 80px;
+    font-size: 32px;
+    float: left;
+    vertical-align: center;
+  }
+
+  .logo {
+    height: 60px;
+    width: 400px;
+    display: inline-block;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+
+  .btn-secondary {
+    display: inline;
+    float: right;
+    margin-right: 80px;
+    margin-top: 20px;
+  }
+
+
+#compose {
+  float: right;
+  margin: 15px 90px 0 0;
+  padding: 12px 8px;
+  border-radius: 5px;
+  background-color: #e8e8e8;
+  img {
+    height: 15px;
+  }
+  &:hover {
+    color: #00a087;
+  }
+}
+
+.avatar {
+  width: 90px;
+  height: 90px;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.bio {
+  font-size: .9em;
+}
+
+.handle {
+
+  line-height: 80px;
+  font-size: 2em;
+  display: inline-block;
+
+}
+
+.user-header {
+  vertical-align: middle;
+  padding-bottom: 10px;
+}
+
+.user {
+  background: #ddd;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 80%;
+  overflow-wrap: break-word;
+}
+
+
+#initialmap {
+/*  min-height: 100%;*/
+  height: 100%;
+/*  width: 61.8%;
+  border: 0;
+  padding: 0;
+  float: right;
+  margin-top: 74px;*/
+}
