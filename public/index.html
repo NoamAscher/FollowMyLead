@@ -54,13 +54,17 @@
 
     let tokenURL = 'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicG90YXRvd2F2ZSIsImEiOiJjaXVzbzlsbHIwMGZhMnVwdmVoMGphOHNvIn0.HyG4kMGYnE6zVYU6IBr66Q';
     let attribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
-    var mymap = L.map('initialmap').setView([49.2566, -123.11554], 12);
+    var map = L.map('initialmap').setView([49.2566, -123.11554], 12);
 
     let northvan = L.marker([49.31841, -123.07725]).bindPopup('North Vancouver');
     let gastown = L.marker([49.28214, -123.11365]).bindPopup('Gastown.');
 
     L.tileLayer(tokenURL, { attribution: attribution, maxZoom: 18})
-    .addTo(mymap);
+    .addTo(map);
+
+    L.marker([49.28213, -123.10854]).addTo(map)
+    .bindPopup('Lighthouse Labs')
+    .openPopup();
 
     // For development, currently 'on click' displays the
 
