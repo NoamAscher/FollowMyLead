@@ -50,7 +50,17 @@ SELECT users.id, handle, bio, avatar
 
 /* 6. Create a new map: adapt from relevant seed INSERT */
 
-/* 7. Add a new location to a map: adapt from relevant seed INSERT */
+/* 7. Add a new location to a map: */
+
+INSERT INTO locations /* stuff, with id incrementing */
+
+SELECT location_id FROM locations WHERE /* stuff to get that from previous query */
+
+INSERT INTO map_locations /* with relevant stuff, with:
+  - id incrementing
+  - locations_id taken from locations
+  - map_id from the map loaded
+  - user_id from the current user
 
 
 /* 8. update pin / place: */
@@ -90,13 +100,12 @@ INSERT INTO map_locations (id, location_id, map_id, user_id)
 
 */
 
-INSERT INTO map_locations (id, location_id, map_id, user_id)
-  VALUES (8, 5, 1, 1);
+
 
 /* of course, autoserializing etc. */
 
 
-/* 10. delete a location from a map:     {bit of a process, this one}   */
+/* 10. delete a location from a map:  */
 /* Given: values (8, 5, 1, 1) for (id, location_id, map_id, user_id);
 /* note that location_id = 5; then: */
 
@@ -109,9 +118,12 @@ DELETE * FROM locations
   (SELECT location_id FROM map_locations
     WHERE location_id = 5);
 
-/* does this work?
+  /* given current seed file, this version won't delete the location. to make it work,
+  add a new location as in 7. and then delete it as in 10.
 
-template...oid...
+
+
+template...oid... for this
 
 /* delete from del_table
 where RevCode = '3'
