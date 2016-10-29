@@ -17,28 +17,36 @@
 
 let tokenURL = 'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicG90YXRvd2F2ZSIsImEiOiJjaXVzbzlsbHIwMGZhMnVwdmVoMGphOHNvIn0.HyG4kMGYnE6zVYU6IBr66Q';
 let attribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
-var map = L.map('initialmap').setView([49.2566, -123.11554], 12);
+var map = L.map('initialmap').setView([49.2566, -123.11554], 5);
 // here is a pretend set of locations.
-var locations = [
-  {id: 1, coords: [49.31841, -123.07725], title: 'Northvan', handle: '@billmurray', description: 'This is where I like to walk my dog when it\'s raining outside.', url: 'http://www.google.com', image: 'https://vanillicon.com/f485a272b3dbd1512f933f690acd6e13_50.png'},
-  {id: 2, coords: [49.28214, -123.11365], title: 'Gastown', handle: '@billmurray', description: 'This is where I like to walk my dog. ', url: 'http://www.google.com', image: 'https://vanillicon.com/f485a272b3dbd1512f933f690acd6e13_50.png'},
-  {id: 3, coords: [49.28213, -123.10854], title: 'Lighthouse Labs', handle: '@billmurray', description: 'Learning to code is one thing. Becoming a developer is a whole other ball-game. At Lighthouse Labs our goal is to take you from hobbyist to professional and be the launchpad for your career.', url: 'http://www.google.com', image: '/images/locations/lighthouselabs.jpg'}
-];
-const locationsArray = [];
-for (let i = 0; i < locations.length; i++) {
-  let handle = locations[i].handle;
-  let avatar = locations[i].avatar;
-  let description = locations[i].description;
-  let title = locations[i].title;
-  let url = locations[i].url;
-  let image = locations[i].image;
-  let html = renderHTML(handle, image, description, url, title);
-  locationsArray.push(L.marker(locations[i].coords).bindPopup(html));
-};
+$.get( "api/locations/2", function(data) {
+  const locationsArray = [];
+  let newLocation;
+  function onMapClick(e) {
+    if (newLocation !== undefined) {
+      map.removeLayer(newLocation);
+    }
+    let coords = [e.latlng.lat, e.latlng.lng];
+    newLocation = L.marker(coords).bindPopup("i am a form" + coords).addTo(map).openPopup();
+  }
+  map.on('click', onMapClick);
+  for (let i = 0; i < data.length; i++) {
+    //let handle = data[i].handle;
+    let avatar = data[i].avatar;
+    let summary = data[i].summary;
+    let name = data[i].name;
+    let url = data[i].url;
+    let image = data[i].img;
+    let category = data[i].category;
+    let html = renderHTML("handle", image, summary, url, name);
+    let coords = [data[i].latitude, data[i].longitude];
+    locationsArray.push(L.marker(coords).bindPopup(html));
+    L.layerGroup(locationsArray).addTo(map);
+  };
+});
 L.tileLayer(tokenURL, { attribution: attribution, maxZoom: 18})
 .addTo(map);
 // the following method takes in an array of points to add to the map view
-L.layerGroup(locationsArray).addTo(map);
 function renderHTML(handle, avatar, description, url, place) {
   var $section = $("<section>").addClass("popup-container").html('<img src=\'' + avatar + '\' class="popup-image"><br>' + '<span class="popup-placetitle"><h6>' + place + '</h6></span>');
   var $header = $("<header>").addClass("popup-header");
