@@ -1,5 +1,7 @@
 body {
   font-family: 'Open Sans', sans-serif;
+  padding: 100px;
+
 }
 
 @media (min-width: 640px) {
@@ -114,10 +116,65 @@ body {
 
 #initialmap {
 /*  min-height: 100%;*/
-  height: 100%;
+  height: 80%;
 /*  width: 61.8%;
   border: 0;
   padding: 0;
   float: right;
   margin-top: 74px;*/
+}
+
+.leaflet-popup-content {
+/*  border: 1px solid red;*/
+  height: 300px;
+  width: 200px;
+  overflow: scroll;
+}
+
+.popup-image {
+  width: 200px;
+/*  border: 1px solid red;*/
+}
+
+.popup-edit {
+  position: fixed;
+  display: inline-block;
+  bottom: 15px;
+  left: 20px;
+}
+
+.popup-delete {
+  position: fixed;
+  display: inline-block;
+  bottom: 15px;
+  left: 60px;
+}
+
+.popup-placetitle {
+  font-size: 1.5em;
+  padding: 0px;
+}
+
+.popup-link {
+  position: fixed;
+  display: inline-block;
+  bottom: 40px;
+  left: 22px;
+}
+
+.popup-description {
+
+}
+
+.footer-favorites {
+  background: #ddd;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+}
+
+.footer-image {
+  width: 100px;
+  height: 100px;
+  border: 5px solid red;
 }
