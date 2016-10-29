@@ -16,12 +16,19 @@ console.log("Connecting to database...")
 const knex = require('knex')(knexConnectionInfo);
 
 app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(express.static(__dirname + "/../public"));
 app.use(methodOverride('_method'));
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/../views');
 app.use(cookieSession({
   name: 'session',
   keys: ['key1', 'key2']
 }));
+
+app.get('/', function(req, res) {
+  res.render('index');
+});
 
 app.get('/users/:id', function(req, res) {
   req.session.userId = req.params.id;
@@ -53,7 +60,7 @@ app.get('/logout', function (req, res) {
   res.redirect('/');
 })
 
-app.get('/login' function(req, res) {
+app.get('/login', function(req, res) {
   req.session.userId = 100;
   console.log('logged in');
   res.redirect('/');
