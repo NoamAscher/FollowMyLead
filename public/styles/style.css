@@ -165,3 +165,16 @@ body {
 .popup-description {
 
 }
+
+.footer-favorites {
+  background: #ddd;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+}
+
+.footer-image {
+  width: 100px;
+  height: 100px;
+  border: 5px solid red;
+}
