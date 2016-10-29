@@ -13,6 +13,54 @@
 */
 
 
+// subfunctions for the sidebar:
+
+var userInfoInSidebar = function(userInfo) {
+
+};
+
+var favouriteMapsInSidebar = function(favMapsInfo) {
+
+};
+
+var followedUsersInSidebar = function(follwdUsersInfo) {
+
+};
+
+
+/* sample to mock:
+var renderTweets = function(tweets) {
+  var dom = tweets.reverse().map(createTweetElement);
+  $('#tweet-container').empty().append(dom);
+};
+*/
+
+var renderSidebar = function(info) {    // info will contain whatever info the sidebar needs.
+  // do something to this if needed:
+  var sideDom = info;
+  $('.content-primary container-fluid').empty().append(sideDom);
+};
+
+
+
+// subfunctions for the map:
+
+var toggleSurrounder = function(mapinfo) {      // name may change based on Mike's work
+
+};
+
+var renderMapWatchers = function(mapWatchersInfo) {
+
+};
+
+
+/* Render the Map!! */
+
+var renderMap = function(mapinfo) {
+  // do something, including the purple stuff.
+}
+
+
 $(function() {
 
   $(document).ajaxError(function(e, req, xhr) {
@@ -27,7 +75,17 @@ $(function() {
     }
   });
 
-  $()
+/* STUFF STUFF STUFF STUFF STUFF STUFF STUFF STUFF STUFF
+STUFF STUFF STUFF STUFF STUFF STUFF STUFF
+STUFF STUFF STUFF STUFF STUFF STUFF STUFF STUFF
+STUFF STUFF STUFF
+STUFF STUFF
+STUFF STUFF STUFF STUFF STUFF STUFF STUFF
+STUFF STUFF STUFF STUFF STUFF STUFF
+*/
+
+
+}
 
 
 
