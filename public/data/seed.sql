@@ -31,50 +31,6 @@ INSERT INTO users (id, handle, email, password, bio, avatar)
     '/images/avatars/218px-Cicero.jpg');
 
 
-
-INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, date_created)
-  VALUES (1, 'Waterfront Station',
-    'Horrible food! Mediocre service and horrible food!',
-    '49.2849163', '-123.1157802', 'transportation', 'www.waterfront.van', '/images/locations/waterfront.jpg',
-    2, '2016.08.30');
-
-INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, date_created)
-  VALUES (2, 'Central United Methodist Church, Spokane, Washington',
-    'I cant believe this place has 3 stars! I gave it one because theres no -1.',
-    '47.653379', '-117.421129', 'sightseeing', 'www.centralMethodist.com', '/images/locations/centralUnited.jpg',
-    3, '2016.05.02');
-
-INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, date_created)
-  VALUES (3, 'Third Beach',
-    'Horrible food! Mediocre service and horrible food!',
-    '49.303181', '-123.158833', 'transportation', 'www.waterfront.van', '/images/locations/third_beach.jpg',
-    2, '2016.08.30');
-
-INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, date_created)
-  VALUES (4, 'Waterfront Station',
-    'I cant believe this place has 3 stars! I gave it one because theres no -1.',
-    '49.2849163', '-123.1157802', 'transportation', 'www.waterfront.van', '/images/locations/waterfront.jpg',
-    2, '2016.08.30');
-
-INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, date_created)
-  VALUES (5, 'Waterfront Station',
-    'Horrible food! Mediocre service and horrible food!',
-    '49.2849163', '-123.1157802', 'transportation', 'www.waterfront.van', '/images/locations/waterfront.jpg',
-    2, '2016.08.30');
-
-INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, date_created)
-  VALUES (6, 'Waterfront Station',
-    'I cant believe this place has 3 stars! I gave it one because theres no -1.',
-    '49.2849163', '-123.1157802', 'transportation', 'www.waterfront.van', '/images/locations/waterfront.jpg',
-    2, '2016.08.30');
-
-INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, date_created)
-  VALUES (7, 'Waterfront Station',
-    'Horrible food! Mediocre service and horrible food!',
-    '49.2849163', '-123.1157802', 'transportation', 'www.waterfront.van', '/images/locations/waterfront.jpg',
-    2, '2016.08.30');
-
-
 INSERT INTO maps (id, user_id, name, date_created)
   VALUES(1, 1, 'Boxa Chocolata', '2016.10.03');
 
@@ -95,6 +51,52 @@ INSERT INTO maps (id, user_id, name, date_created)
 
 INSERT INTO maps (id, user_id, name, date_created)
   VALUES(7, 1, 'Forrest''s Other Map', '2016.10.06');
+
+
+
+INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
+  VALUES (1, 'Waterfront Station',
+    'Horrible food! Mediocre service and horrible food!',
+    '49.2849163', '-123.1157802', 'transportation', 'www.waterfront.van', '/images/locations/waterfront.jpg',
+    2, 1, '2016.08.30');
+
+INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
+  VALUES (2, 'Central United Methodist Church, Spokane, Washington',
+    'I cant believe this place has 3 stars! I gave it one because theres no -1.',
+    '47.653379', '-117.421129', 'sightseeing', 'www.centralMethodist.com', '/images/locations/centralUnited.jpg',
+    3, 1, '2016.05.02');
+
+INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
+  VALUES (3, 'Third Beach',
+    'Horrible food! Mediocre service and horrible food!',
+    '49.303181', '-123.158833', 'transportation', 'www.waterfront.van', '/images/locations/third_beach.jpg',
+    2, 1, '2016.08.30');
+
+INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
+  VALUES (4, 'Waterfront Station',
+    'I cant believe this place has 3 stars! I gave it one because theres no -1.',
+    '49.2849163', '-123.1157802', 'transportation', 'www.waterfront.van', '/images/locations/waterfront.jpg',
+    2, 3, '2016.08.30');
+
+INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
+  VALUES (5, 'Waterfront Station',
+    'Horrible food! Mediocre service and horrible food!',
+    '49.2849163', '-123.1157802', 'transportation', 'www.waterfront.van', '/images/locations/waterfront.jpg',
+    2, 4, '2016.08.30');
+
+INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
+  VALUES (6, 'Waterfront Station',
+    'I cant believe this place has 3 stars! I gave it one because theres no -1.',
+    '49.2849163', '-123.1157802', 'transportation', 'www.waterfront.van', '/images/locations/waterfront.jpg',
+    2, 7, '2016.08.30');
+
+INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
+  VALUES (7, 'Waterfront Station',
+    'Horrible food! Mediocre service and horrible food!',
+    '49.2849163', '-123.1157802', 'transportation', 'www.waterfront.van', '/images/locations/waterfront.jpg',
+    2, 6, '2016.08.30');
+
+
 
 /*
 INSERT INTO map_locations (id, location_id, map_id, user_id)
