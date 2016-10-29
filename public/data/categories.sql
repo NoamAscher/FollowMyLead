@@ -161,7 +161,7 @@ INSERT INTO locations (id, name, summary, latitude, longitude, category, url, im
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
   VALUES (26, 'Granville Island Public Market',
     'Peninsula & shopping district known for its public market, brewery & thriving artist community.',
-    '49.2641465', '-123.1009203', 'Points of Interest', 'granvilleisland.com', '/images/locations/gIsland.jpg',
+    '49.2723568', '-123.1372595', 'Points of Interest', 'granvilleisland.com', '/images/locations/gIsland.jpg',
     6, 7, '2016.09.03');
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
@@ -173,7 +173,7 @@ INSERT INTO locations (id, name, summary, latitude, longitude, category, url, im
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
   VALUES (28, 'Slickity Jim''s Chat ''n'' Chew',
     'Funky neighbourhood hot spot offering diverse menu of down-home eats & drawing locals & hipsters.',
-    '49.2812332', '-123.0169317', 'Restaurants', 'slickityjims.com', '/images/locations/slickity.jpg',
+    '49.2539856', '-123.1032439', 'Restaurants', 'slickityjims.com', '/images/locations/slickity.jpg',
     6, 7, '2016.08.25');
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
@@ -193,7 +193,7 @@ INSERT INTO locations (id, name, summary, latitude, longitude, category, url, im
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
   VALUES (31, 'Granville Island Public Market',
     'Peninsula & shopping district known for its public market, brewery & thriving artist community.',
-    '49.2641465', '-123.1009203', 'Points of Interest', 'granvilleisland.com', '/images/locations/gIsland.jpg',
+    '49.2723568', '-123.1372595', 'Points of Interest', 'granvilleisland.com', '/images/locations/gIsland.jpg',
     2, 3, '2016.09.03');
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
@@ -205,7 +205,7 @@ INSERT INTO locations (id, name, summary, latitude, longitude, category, url, im
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
   VALUES (33, 'Slickity Jim''s Chat ''n'' Chew',
     'Funky neighbourhood hot spot offering diverse menu of down-home eats & drawing locals & hipsters.',
-    '49.2812332', '-123.0169317', 'Restaurants', 'slickityjims.com', '/images/locations/slickity.jpg',
+    '49.2539856', '-123.1032439', 'Restaurants', 'slickityjims.com', '/images/locations/slickity.jpg',
     2, 3, '2016.08.25');
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
