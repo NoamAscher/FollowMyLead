@@ -60,18 +60,40 @@
     let attribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
     var map = L.map('initialmap').setView([49.2566, -123.11554], 12);
 
-    var markers = [
-      {id: 1, coords: [49.31841, -123.07725], title: 'northvan'},
-      {id: 2, coords: [49.31841, -123.07725], title: 'northvan'},
-      {id: 3, coords: [49.31841, -123.07725], title: 'northvan'},
-    ]
 
-    //for each marker
+    // here is a pretend set of locations.
 
-    //call setMarker
-    let northvan = L.marker([49.31841, -123.07725]).bindPopup();
+    var locations = [
+      {id: 1, coords: [49.31841, -123.07725], title: 'northvan', handle: 'billmurray', description: 'This is where I like to walk my dog.', url: 'http://www.google.com', image: 'http://www.picture.com/image.jpg'},
+      {id: 2, coords: [49.28214, -123.11365], title: 'gastown', handle: 'billmurray', description: 'This is where I like to walk my dog.', url: 'http://www.google.com', image: 'http://www.picture.com/image.jpg'},
+      {id: 3, coords: [49.28213, -123.10854], title: 'lighthouse', handle: 'billmurray', description: 'This is where I like to walk my dog.', url: 'http://www.google.com', image: 'http://www.picture.com/image.jpg'}
+    ];
+
+    // for each marker
+    // call setMarker
+
+    //
+
+    const locationsArray = [];
+
+    for (let i = 0; i < locations.length; i++) {
+
+      let handle = locations[i].handle;
+      let avatar = locations[i].avatar;
+      let description = locations[i].description;
+      let title = locations[i].title;
+      let url = locations[i].url;
+      let image = locations[i].image;
+      let html = renderHTML(handle, image, description, url, title);
+
+      locationsArray.push(L.marker(locations[i].coords)
+      .bindPopup("test"));
+
+    };
 
     //getHTMLForMarker(pass in the marker)
+
+
 
     // function getHTML
 
@@ -83,15 +105,14 @@
     // });
 
 
-    let gastown = L.marker([49.28214, -123.11365]).bindPopup('Hello');
-    let lighthouse = L.marker([49.28213, -123.10854]).bindPopup('Lighthouse Labs');
+
 
     L.tileLayer(tokenURL, { attribution: attribution, maxZoom: 18})
     .addTo(map);
 
     // the following method takes in an array of points to add to the map view
 
-    L.layerGroup([northvan, gastown, lighthouse]).addTo(map);
+    L.layerGroup(locationsArray).addTo(map);
 
     function renderHTML(handle, avatar, bio, url, place) {
 
@@ -122,7 +143,6 @@
 
     };
 
-    $('#location-popup').append(renderHTML("@billmurray", "avatars/billymurray.jpg", "My name is Bill Murray.  My favourite food is indian curry", "http://www.geocities.com/sunsetstrip/030404", "Dog Walking Spot"));
     </script>
 
 
