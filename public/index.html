@@ -64,9 +64,9 @@
     // here is a pretend set of locations.
 
     var locations = [
-      {id: 1, coords: [49.31841, -123.07725], title: 'northvan', handle: 'billmurray', description: 'This is where I like to walk my dog.', url: 'http://www.google.com', image: 'http://www.picture.com/image.jpg'},
-      {id: 2, coords: [49.28214, -123.11365], title: 'gastown', handle: 'billmurray', description: 'This is where I like to walk my dog.', url: 'http://www.google.com', image: 'http://www.picture.com/image.jpg'},
-      {id: 3, coords: [49.28213, -123.10854], title: 'lighthouse', handle: 'billmurray', description: 'This is where I like to walk my dog.', url: 'http://www.google.com', image: 'http://www.picture.com/image.jpg'}
+      {id: 1, coords: [49.31841, -123.07725], title: 'northvan', handle: 'billmurray', description: 'This is where I like to walk my dog.', url: 'http://www.google.com', image: 'https://vanillicon.com/f485a272b3dbd1512f933f690acd6e13_50.png'},
+      {id: 2, coords: [49.28214, -123.11365], title: 'gastown', handle: 'billmurray', description: 'This is where I like to walk my dog.', url: 'http://www.google.com', image: 'https://vanillicon.com/f485a272b3dbd1512f933f690acd6e13_50.png'},
+      {id: 3, coords: [49.28213, -123.10854], title: 'lighthouse', handle: 'billmurray', description: 'This is where I like to walk my dog.', url: 'http://www.google.com', image: 'https://vanillicon.com/f485a272b3dbd1512f933f690acd6e13_50.png'}
     ];
 
     // for each marker
@@ -86,8 +86,7 @@
       let image = locations[i].image;
       let html = renderHTML(handle, image, description, url, title);
 
-      locationsArray.push(L.marker(locations[i].coords)
-      .bindPopup("test"));
+      locationsArray.push(L.marker(locations[i].coords).bindPopup(html));
 
     };
 
@@ -139,7 +138,7 @@
       $section.append($content);
       $section.append($footer);
 
-      return $section;
+      return $($section).prop('outerHTML');
 
     };
 

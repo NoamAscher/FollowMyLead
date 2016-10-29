@@ -1,5 +1,7 @@
 body {
   font-family: 'Open Sans', sans-serif;
+  padding: 100px;
+
 }
 
 @media (min-width: 640px) {
@@ -114,7 +116,7 @@ body {
 
 #initialmap {
 /*  min-height: 100%;*/
-  height: 100%;
+  height: 80%;
 /*  width: 61.8%;
   border: 0;
   padding: 0;
