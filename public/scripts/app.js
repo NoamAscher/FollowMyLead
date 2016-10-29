@@ -15,15 +15,27 @@
 
 // subfunctions for the sidebar:
 
+
+
 var userInfoInSidebar = function(userInfo) {
+  return `
+    <article class="user">
+      <header class="user-header">
+      <img class="avatar" src="${users.avatar}">
+      <span class="handle">${users.handle}</span>
+    </header>
+      <span class="bio">
+        ${users.bio}
+      </span>
+    </article>
+  `;
+};
+
+var favouriteMapsInSidebar = function(favouriteMapsInfo) {
 
 };
 
-var favouriteMapsInSidebar = function(favMapsInfo) {
-
-};
-
-var followedUsersInSidebar = function(follwdUsersInfo) {
+var followedUsersInSidebar = function(followedUsersInfo) {
 
 };
 
@@ -45,9 +57,13 @@ var renderSidebar = function(info) {    // info will contain whatever info the s
 
 // subfunctions for the map:
 
-var toggleSurrounder = function(mapinfo) {      // name may change based on Mike's work
+var toggleSurrounder = function(noParamPerhaps) {      // name may change based on Mike's work
 
 };
+
+var renderOtherUsermap = function(mapinfo) {
+
+}
 
 var renderMapWatchers = function(mapWatchersInfo) {
 
