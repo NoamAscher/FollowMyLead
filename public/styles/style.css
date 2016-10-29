@@ -121,3 +121,7 @@ body {
   float: right;
   margin-top: 74px;*/
 }
+
+#popup-container {
+  border: 1px solid red;
+}

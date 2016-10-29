@@ -12,6 +12,8 @@
 </head>
 <body>
 
+  <script type="text/javascript" src="/scripts/app.js"></script>
+
 <div class="container-fluid">
 
 
@@ -45,36 +47,85 @@
     <div id="initialmap"></div>
   </aside>
 
-
 </div>
 
-    <script type="text/javascript" src="/scripts/app.js"></script>
 
-   <script>
+
+
+
+
+<script>
 
     let tokenURL = 'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicG90YXRvd2F2ZSIsImEiOiJjaXVzbzlsbHIwMGZhMnVwdmVoMGphOHNvIn0.HyG4kMGYnE6zVYU6IBr66Q';
     let attribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
     var map = L.map('initialmap').setView([49.2566, -123.11554], 12);
 
-    let northvan = L.marker([49.31841, -123.07725]).bindPopup('North Vancouver');
-    let gastown = L.marker([49.28214, -123.11365]).bindPopup('Gastown.');
+    var markers = [
+      {id: 1, coords: [49.31841, -123.07725], title: 'northvan'},
+      {id: 2, coords: [49.31841, -123.07725], title: 'northvan'},
+      {id: 3, coords: [49.31841, -123.07725], title: 'northvan'},
+    ]
+
+    //for each marker
+
+    //call setMarker
+    let northvan = L.marker([49.31841, -123.07725]).bindPopup();
+
+    //getHTMLForMarker(pass in the marker)
+
+    // function getHTML
+
+
+    // debugger;
+    // northvan.on('popupopen', function (event) {
+    //   console.log("popupopen ", event);
+    //   debugger;
+    // });
+
+
+    let gastown = L.marker([49.28214, -123.11365]).bindPopup('Hello');
+    let lighthouse = L.marker([49.28213, -123.10854]).bindPopup('Lighthouse Labs');
 
     L.tileLayer(tokenURL, { attribution: attribution, maxZoom: 18})
     .addTo(map);
 
-    L.marker([49.28213, -123.10854]).addTo(map)
-    .bindPopup('Lighthouse Labs')
-    .openPopup();
+    // the following method takes in an array of points to add to the map view
 
-    // For development, currently 'on click' displays the
+    L.layerGroup([northvan, gastown, lighthouse]).addTo(map);
 
-    function onMapClick(e) {
-      alert("You clicked the map at " + e.latlng);
-    }
+    function renderHTML(handle, avatar, bio, url, place) {
 
-    mymap.on('click', onMapClick);
+      var $section = $("<section>").addClass("popup-container");
 
-   </script>
+      var $header = $("<header>").addClass("popup-header");
+      var $content = $("<content>").addClass("popup-description");
+      var $footer = $("<footer>").addClass("popup-footer");
+
+      var editButton = $("<button>").addClass("btn btn-secondary").text('Edit');
+      var deleteButton = $("<button>").addClass("btn btn-secondary").text('Delete');
+
+      $header.append('<img src=\'' + avatar + '\' width=100 length=100>');
+      $header.append(handle);
+
+      $content.append(place);
+      $content.append(url);
+      $content.append(bio);
+
+      $footer.append(editButton);
+      $footer.append(deleteButton);
+
+      $section.append($header);
+      $section.append($content);
+      $section.append($footer);
+
+      return $section;
+
+    };
+
+    $('#location-popup').append(renderHTML("@billmurray", "avatars/billymurray.jpg", "My name is Bill Murray.  My favourite food is indian curry", "http://www.geocities.com/sunsetstrip/030404", "Dog Walking Spot"));
+    </script>
+
+
 
 </body>
 </html>
