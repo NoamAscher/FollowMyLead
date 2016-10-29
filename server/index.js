@@ -23,6 +23,18 @@ app.use(cookieSession({
   keys: ['key1', 'key2']
 }));
 
+app.get('/users/:id', function(req, res) {
+  req.session.userId = req.params.id;
+  knex.select().from('users').innerJoin('maps', 'users.id', 'user_id').where('users.id', req.params.id)
+  .then(function(users) {
+    res.render('user.html')
+  })
+  .catch(function(error) {
+    console.error(error);
+    res.json({error: {message: error}})
+  })
+});
+
 // Example user loaded // no login
 app.get('/api/users/:id', function(req, res) {
   knex.select().from('users').innerJoin('maps', 'users.id', 'user_id').where('users.id', req.params.id)
@@ -46,17 +58,6 @@ app.get('/api/locations/:id', function(req, res) {
   })
 });
 
-app.get('/users/:id', function(req, res) {
-  req.session.userId = req.params.id;
-  knex.select().from('users').innerJoin('maps', 'users.id', 'user_id').where('users.id', req.params.id)
-  .then(function(users) {
-    res.render('users.html')
-  })
-  .catch(function(error) {
-    console.error(error);
-    res.json({error: {message: error}})
-  })
-});
 
 app.get('/api/maps/:id', function(req, res) {
   knex.select().from('maps').where('id', req.params.id)
@@ -80,6 +81,11 @@ app.post('/maps/new', function(req, res) {
   })
 
 });
+
+// instead of longitude/latitude, store the co-ordinates in an array
+// Example: [49.28214, -123.07725]  - this is how the API likes the
+// data anyway.  OR we can just mutate when we write/read the coords
+// Example:  array[0] = long   //   array[1] = lat
 
 // NOT DONE - NEED MAP API REFERENCE
 app.post('/maps/:id/locations', function(req, res) {
