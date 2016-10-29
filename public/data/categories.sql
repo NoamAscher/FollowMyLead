@@ -12,13 +12,13 @@ INSERT INTO locations (id, name, summary, latitude, longitude, category, url, im
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
   VALUES (3, 'Benny''s',
-    'A neighbourhood classic. Cozy atmosphere, nice staff, hot & cold drinks, and all your bagel needs met.',
+    'A neighbourhood classic. Cozy atmosphere, nice staff, hot & cold drinks.',
     '49.2848816', '-123.1456593', 'Restaurants', 'www.bennys.com', '/images/locations/Benny''s.jpg',
     1, 1, '2016.08.15');
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
   VALUES (4, 'Vanier Park',
-    'Great venue for Bard on the Beach. Ocean front, great view of the sunset and home to the planetarium.',
+    'Great venue for Bard on the Beach.',
     '49.2767298', '-123.145843', 'Parks and Nature', 'www.vanier-park.yvr', 'images/locations/VanierPark.jpg',
     1, 1, '2016.08.24');
 
@@ -128,7 +128,7 @@ INSERT INTO locations (id, name, summary, latitude, longitude, category, url, im
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
   VALUES (21, 'Nine O''Clock Gun',
-    'An explosive charge in the gun goes off at 9am and 9pm. It''s a Vancouver landmark and has a great view.',
+    'An explosive charge in the gun goes off at 9am and 9pm.',
     '49.298456', '-123.1226497', 'Points of Interest', 'vancouver.ca', '/images/locations/rickshaw.jpg',
     5, 6, '2016.08.11');
 
