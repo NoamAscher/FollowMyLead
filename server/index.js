@@ -47,6 +47,18 @@ app.get('/api/users/:id', function(req, res) {
   })
 });
 
+app.get('/logout', function (req, res) {
+  req.session.userId = null;
+  console.log('logged out user');
+  res.redirect('/');
+})
+
+app.get('/login' function(req, res) {
+  req.session.userId = 100;
+  console.log('logged in');
+  res.redirect('/');
+})
+
 app.get('/api/locations/:id', function(req, res) {
   knex.select().from('locations').where('user_id', req.params.id)
   .then(function (locations) {
