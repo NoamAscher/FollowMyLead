@@ -64,15 +64,10 @@
     // here is a pretend set of locations.
 
     var locations = [
-      {id: 1, coords: [49.31841, -123.07725], title: 'northvan', handle: 'billmurray', description: 'This is where I like to walk my dog.', url: 'http://www.google.com', image: 'https://vanillicon.com/f485a272b3dbd1512f933f690acd6e13_50.png'},
-      {id: 2, coords: [49.28214, -123.11365], title: 'gastown', handle: 'billmurray', description: 'This is where I like to walk my dog.', url: 'http://www.google.com', image: 'https://vanillicon.com/f485a272b3dbd1512f933f690acd6e13_50.png'},
-      {id: 3, coords: [49.28213, -123.10854], title: 'lighthouse', handle: 'billmurray', description: 'This is where I like to walk my dog.', url: 'http://www.google.com', image: 'https://vanillicon.com/f485a272b3dbd1512f933f690acd6e13_50.png'}
+      {id: 1, coords: [49.31841, -123.07725], title: 'Northvan', handle: '@billmurray', description: 'This is where I like to walk my dog when it\'s raining outside.', url: 'http://www.google.com', image: 'https://vanillicon.com/f485a272b3dbd1512f933f690acd6e13_50.png'},
+      {id: 2, coords: [49.28214, -123.11365], title: 'Gastown', handle: '@billmurray', description: 'This is where I like to walk my dog. ', url: 'http://www.google.com', image: 'https://vanillicon.com/f485a272b3dbd1512f933f690acd6e13_50.png'},
+      {id: 3, coords: [49.28213, -123.10854], title: 'Lighthouse Labs', handle: '@billmurray', description: 'Learning to code is one thing. Becoming a developer is a whole other ball-game. At Lighthouse Labs our goal is to take you from hobbyist to professional and be the launchpad for your career.', url: 'http://www.google.com', image: '/images/locations/lighthouselabs.jpg'}
     ];
-
-    // for each marker
-    // call setMarker
-
-    //
 
     const locationsArray = [];
 
@@ -90,22 +85,6 @@
 
     };
 
-    //getHTMLForMarker(pass in the marker)
-
-
-
-    // function getHTML
-
-
-    // debugger;
-    // northvan.on('popupopen', function (event) {
-    //   console.log("popupopen ", event);
-    //   debugger;
-    // });
-
-
-
-
     L.tileLayer(tokenURL, { attribution: attribution, maxZoom: 18})
     .addTo(map);
 
@@ -113,26 +92,13 @@
 
     L.layerGroup(locationsArray).addTo(map);
 
-    function renderHTML(handle, avatar, bio, url, place) {
+    function renderHTML(handle, avatar, description, url, place) {
 
-      var $section = $("<section>").addClass("popup-container");
+      var $section = $("<section>").addClass("popup-container").html('<img src=\'' + avatar + '\' class="popup-image"><br>' + '<span class="popup-placetitle"><h6>' + place + '</h6></span>');
 
       var $header = $("<header>").addClass("popup-header");
-      var $content = $("<content>").addClass("popup-description");
-      var $footer = $("<footer>").addClass("popup-footer");
-
-      var editButton = $("<button>").addClass("btn btn-secondary").text('Edit');
-      var deleteButton = $("<button>").addClass("btn btn-secondary").text('Delete');
-
-      $header.append('<img src=\'' + avatar + '\' width=100 length=100>');
-      $header.append(handle);
-
-      $content.append(place);
-      $content.append(url);
-      $content.append(bio);
-
-      $footer.append(editButton);
-      $footer.append(deleteButton);
+      var $content = $("<content>").addClass("popup-body").html(description + '<p>' + '<a class="popup-link" href=' + url + '>' + url + '</a>');
+      var $footer = $("<footer>").addClass("popup-footer").html("<button type='button' class='popup-edit'>Edit</button><button type='button' class='popup-delete'>Delete</button>");
 
       $section.append($header);
       $section.append($content);

@@ -33,7 +33,6 @@
 
 // });
 
-// Mike :::
 
 
 $(document).ready(function(){

@@ -124,6 +124,44 @@ body {
   margin-top: 74px;*/
 }
 
-#popup-container {
-  border: 1px solid red;
+.leaflet-popup-content {
+/*  border: 1px solid red;*/
+  height: 300px;
+  width: 200px;
+  overflow: scroll;
+}
+
+.popup-image {
+  width: 200px;
+/*  border: 1px solid red;*/
+}
+
+.popup-edit {
+  position: fixed;
+  display: inline-block;
+  bottom: 15px;
+  left: 20px;
+}
+
+.popup-delete {
+  position: fixed;
+  display: inline-block;
+  bottom: 15px;
+  left: 60px;
+}
+
+.popup-placetitle {
+  font-size: 1.5em;
+  padding: 0px;
+}
+
+.popup-link {
+  position: fixed;
+  display: inline-block;
+  bottom: 40px;
+  left: 22px;
+}
+
+.popup-description {
+
 }
