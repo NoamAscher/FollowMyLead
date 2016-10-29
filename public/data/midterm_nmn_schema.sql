@@ -36,7 +36,6 @@ CREATE TABLE locations (
 );
 
 
-
 /*
 CREATE TABLE map_locations (
   id BIGSERIAL PRIMARY KEY,
@@ -45,6 +44,7 @@ CREATE TABLE map_locations (
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
 */
+
 
 CREATE TABLE favourite_maps (
   id BIGSERIAL PRIMARY KEY,
