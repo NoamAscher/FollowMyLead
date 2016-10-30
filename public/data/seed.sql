@@ -8,7 +8,7 @@ INSERT INTO users (id, handle, email, password, bio, avatar)
 
 INSERT INTO users (id, handle, email, password, bio, avatar)
   VALUES (3, 'Paris', 'hilton@email.com', 'lhl',
-    ':-)', '/images/avatars/img_2_b_added.jpg');
+    ':-)', '/images/avatars/Paris-Hilton-and-her-dog.jpg');
 
 INSERT INTO users (id, handle, email, password, bio, avatar)
   VALUES (4, 'random_celeb', 'random_celeb@celeb.org', 'lhl',

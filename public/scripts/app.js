@@ -92,14 +92,27 @@ var renderTweets = function(tweets) {
   var dom = tweets.reverse().map(createTweetElement);
   $('#tweet-container').empty().append(dom);
 };
+
+// Loads and then renders the tweets
+var loadTweets = function() {
+  $.get('/tweets').then(renderTweets);
+};
 */
 
-var renderSidebar = function(info) {    // info will contain whatever info the sidebar needs.
-  // do something to this if needed:
-  var sideDom = info;
-  $('.content-primary container-fluid').empty().append(sideDom);
-};
 
+// var renderSidebar = function(info) {    // info will contain whatever info the sidebar needs.
+//   // do something to this if needed:
+//   var sideDom = info.map(userInfoInSidebar);
+//   $('.content-primary container-fluid').append(sideDom);
+// };
+
+var loadSidebar = function() {
+  $.get('api/users/3', function(data) {
+    var theObject = data[0];
+    console.log(theObject);
+    $('.content-primary').empty().append(userInfoInSidebar(theObject));
+    });
+};
 
 
 // subfunctions for the map:
@@ -138,10 +151,8 @@ $(function() {
     }
   });
 
-  $.get('api/users/1', function(data) {
-    var info = ([data[0].id, data[0].handle, data[0].bio, data[0].avatar]);
-    return info;
-  }).then(userInfoInSidebar)
+  //$('.content-primary').append('<span>HI APPEND ME PLEASE</span');
+  loadSidebar();
   //$.get('/api/users/:id').then(userInfoInSidebar());
 
 
