@@ -113,7 +113,7 @@ var followedUsersInSidebar = function(followedUsersInfo) {
 
 
 var loadUser = function() {
-  $.get('api/users/1', function(data) {
+  $.get('api/users/3', function(data) {
     var theObject = data[0];
     $('.upper-sidebar').empty().append(userInfoInSidebar(theObject));
   })
@@ -134,6 +134,14 @@ var loadUser = function() {
       $('.followed-body').hide().append(followedUsersInSidebar(entry));
     });
   });
+};
+
+var loadMaps = function() {
+  $.get('/api/maps/4', function(data) {
+    console.log(data[0].name);
+    var theObject = data[0].name;
+    $('.maps').append(theObject);
+  })
 };
 
 
@@ -182,6 +190,8 @@ $(function() {
 
   loadFavourites();
 
+  loadMaps();
+
 
 
 
@@ -212,6 +222,12 @@ $(function() {
         $('.favorites-body').hide();
         $('.followed-body').show();
       }
+  });
+
+  $('#new-map').on('click', function(e) {
+    event.preventDefault();
+    $('#new-map-name').fadeToggle('#new-map-name').addClass('show');
+    $('#txtArea').focus();
   });
 
 });

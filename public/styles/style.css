@@ -59,6 +59,31 @@ body {
     margin-top: 8px;
   }
 
+  #new-map {
+    margin-top: 25px;
+  }
+
+  #new-map-name {
+    float: right;
+    margin-top: 30px;
+    margin-right: 10px;
+    opacity: 0;
+  }
+
+  #new-map-name.show {
+    opacity: 1;
+      }
+
+  #submit-new-small {
+    padding: 3px;
+    margin-left: 5px;
+    margin-top: 2px;
+  }
+
+
+
+
+
 
 /*#compose {
   float: right;
@@ -119,11 +144,22 @@ body {
   border: 1px solid #bbb;
   /*border-radius: 10px;*/
   margin: auto;
-  margin-top: 20px;
+  margin-top: 15px;
   /*margin-bottom: 10px;*/
   padding: 0 0 0 0;
   width: 80%;
   /*overflow-wrap: break-word;*/
+}
+
+#map-display {
+  font-size: 85%;
+  padding-top: 10px;
+  background: #ddd;
+  border: 1px solid #bbb;
+  margin-top: 20px;
+  padding: 5px;
+  margin-left: 45px;
+  border-radius: 5px;
 }
 
 .lower-sidebar-header {
@@ -184,7 +220,8 @@ body {
   padding: 0;
   margin: 0;
   display: block;
-  font-size: 100%
+  font-size: 20px;
+  margin-bottom: 5px;
   height: 40px;
 
 }
@@ -227,9 +264,8 @@ body {
 }
 .followed-body .handle {
   display: block;
-  height: 10px;
-  font-size: 100%
-  border: 1px solid #bbb;
+  height: 50px;
+  margin-bottom: 5px;
 }
 
 .followed-body .right .bio {

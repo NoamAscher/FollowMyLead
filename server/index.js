@@ -95,9 +95,9 @@ app.get('/api/maps/:id', function(req, res) {
 });
 
 app.post('/maps/new', function(req, res) {
-  knex('maps').insert({'user_id': req.session.userId, 'name': req.body.name, 'date_created': Date.now()})
+  knex('maps').insert({'user_id': req.session.userId, 'name': req.body.name})
   .then(function(result) {
-    res.json({success: true});
+    res.redirect('/');
   })
   .catch(function(error) {
     console.error(error);

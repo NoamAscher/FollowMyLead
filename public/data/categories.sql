@@ -251,8 +251,4 @@ INSERT INTO locations (id, name, summary, latitude, longitude, category, url, im
     '49.2821313', '-123.104346', 'Cafes', 'nelsontheseagull.com', 'images/locations/Nelson.jpg',
     7, 1, '2016.08.24');
 
-INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
- VALUES (36, 'Playland Amusement Park',
-   'Rides for all ages including a coaster built in 1958.',
-   '49.282756' ,'-123.1068707', 'Points of Interest', 'pne.ca', '/images/locations/playland.jpg',
-   7, 1, '2016.09.03');
+

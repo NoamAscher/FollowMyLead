@@ -23,12 +23,23 @@
           Logged in:
           <% if(loggedin) { %>
             TRUE <form method="GET" action="/logout"><button action="/logout" type="submit" class="btn btn-secondary">LOGOUT</button></form>
+
+
           <% } else { %>
             FALSE <form method="GET" action="/login"><button action="/login" type="submit" class="btn btn-secondary">LOGIN</button></form>
           <% } %>
         </div>
+
+            <% if(loggedin) { %>
+            <button action="/maps/new" id="new-map" class="btn btn-secondary">CREATE A NEW MAP</button>
+
+            <form action="/maps/new" method="POST" id="new-map-name" >
+        <input name="name" placeholder="MAP NAME" style="width: 250px"><button class="btn btn-secondary sm" id="submit-new-small">SUBMIT</button></form>
+
+             <% } %>
       </div>
     </nav>
+
   <main class="content-primary container-fluid">
 
     <% if (!loggedin) { %>
@@ -53,8 +64,16 @@
       <span class="bio">Murray was born on September 21, 1950 in Evanston, Illinois, and was raised in Wilmette, Illinois, a northern suburb of Chicago. </span>
       </article>
       -->
+
     </div>
      <% } %>
+
+     <% if (loggedin) { %>
+     <div class="maps">
+      <span id="map-display">MAPS:</span>
+    </div>
+     <% } %>
+
 
     <% if (loggedin) { %>
     <div class="lower-sidebar">

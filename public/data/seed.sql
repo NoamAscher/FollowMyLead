@@ -100,10 +100,7 @@ INSERT INTO locations (id, name, summary, latitude, longitude, category, url, im
 */
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> origin
+/*
 INSERT INTO map_locations (id, location_id, map_id, user_id)
   VALUES (1, 1, 1, 1);
 INSERT INTO map_locations (id, location_id, map_id, user_id)
