@@ -57,4 +57,3 @@ CREATE TABLE follow_pairs (
   follower_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   following_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
-

@@ -27,11 +27,15 @@ app.use(cookieSession({
 }));
 
 app.get('/', function(req, res) {
-  res.render('index');
+  var loggedin = false;
+  if (req.session.userId) {
+    loggedin = true;
+  }
+  console.log('loggedin is ', loggedin)
+  res.render('index', {loggedin: loggedin});
 });
 
 app.get('/users/:id', function(req, res) {
-  req.session.userId = req.params.id;
   knex.select().from('users').innerJoin('maps', 'users.id', 'user_id').where('users.id', req.params.id)
   .then(function(users) {
     res.render('user.html')
@@ -55,16 +59,16 @@ app.get('/api/users/:id', function(req, res) {
 });
 
 app.get('/logout', function (req, res) {
-  req.session.userId = null;
-  console.log('logged out user');
+  req.session = null;
   res.redirect('/');
-})
+  console.log('logged out user');
+});
 
 app.get('/login', function(req, res) {
-  req.session.userId = 100;
+  req.session.userId = 1;
   console.log('logged in');
   res.redirect('/');
-})
+});
 
 app.get('/api/locations/:id', function(req, res) {
   knex.select().from('locations').where('user_id', req.params.id)
@@ -81,7 +85,8 @@ app.get('/api/locations/:id', function(req, res) {
 app.get('/api/maps/:id', function(req, res) {
   knex.select().from('maps').where('id', req.params.id)
   .then(function(maps) {
-    res.json(maps[0]);
+    res.json(maps);
+    console.log(maps);
   })
   .catch(function(error) {
     console.error(error);
@@ -108,9 +113,12 @@ app.post('/maps/new', function(req, res) {
 
 // NOT DONE - NEED MAP API REFERENCE
 app.post('/maps/:id/locations', function(req, res) {
-  knex('locations').insert({'name': req.body.name, 'summary': req.body.summary, 'latitude': ASKMIKE, 'longitude': ASKMIKE, 'category': req.body.category, 'url': req.body.url, 'img': req.body.img, 'user_id': req.session.userId, 'map_id': req.params.id, 'date_created': Date.now()})
+  console.log(req.params.id);
+  console.log(req.session.userId);
+  knex('locations').insert({'name': req.body.name, 'summary': req.body.summary, 'latitude': req.body.lat, 'longitude': req.body.long, 'category': req.body.category, 'url': req.body.url, 'img': req.body.img, 'user_id': req.session.userId, 'map_id': req.params.id })
   .then(function(result) {
-    res.json({success: true});
+    res.redirect('/');
+    console.log("Written to database.");
   })
   .catch(function(error) {
     console.error(error);

@@ -97,9 +97,13 @@ INSERT INTO locations (id, name, summary, latitude, longitude, category, url, im
     'Horrible food! Mediocre service and horrible food!',
     '49.2849163', '-123.1157802', 'transportation', 'www.waterfront.van', '/images/locations/waterfront.jpg',
     2, 6, '2016.08.30');
+*/
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin
 INSERT INTO map_locations (id, location_id, map_id, user_id)
   VALUES (1, 1, 1, 1);
 INSERT INTO map_locations (id, location_id, map_id, user_id)
@@ -190,4 +194,3 @@ INSERT INTO follow_pairs (id, follower_id, following_id)
   VALUES (21, 7, 5);
 INSERT INTO follow_pairs (id, follower_id, following_id)
   VALUES (22, 7, 6);
-
