@@ -149,25 +149,26 @@ body {
   height: 100%;
 }
 
-.lower-sidebar-body {
+
+.favorites-body {
   border-top: 1px solid #bbb;
   padding: 12px 0 0 12px;
 }
 
-.lower-sidebar-body .map {
+.favorites-body .map {
   display: block;
   height: 120px;
   padding: 0px;
 }
 
-.lower-sidebar-body .left {
+.favorites-body .left {
   display: block;
   width: 30%;
   float: left;
   font-size: 60%;
 }
 
-.lower-sidebar-body .right {
+.favorites-body .right {
   display: block;
   width: 70%;
   height: 75%;
@@ -177,7 +178,7 @@ body {
   margin-left: 100px;
   font-size: 90%;
 }
-.lower-sidebar-body .right .handle {
+.favorites-body .right .handle {
   height: 70%;
   display: inline;
   padding: 0;
@@ -188,13 +189,54 @@ body {
 
 }
 
-.lower-sidebar-body .right .name {
-    display: inline;
+.favorites-body .right .name {
+  display: inline;
   padding: 0;
-  text-align: center;
+  text-align: left;
   display: block;
   }
 
+
+.followed-body {
+  border-top: 1px solid #bbb;
+  padding: 12px 0 0 12px;
+}
+
+.followed-body .followed {
+  display: block;
+  height: 120px;
+  padding: 0px;
+}
+
+.followed-body .left {
+  display: block;
+  width: 30%;
+  float: left;
+  font-size: 60%;
+}
+
+.followed-body .right {
+  display: block;
+  width: 75%;
+  height: 90%;
+
+  float: top;
+  padding: 0px;
+  margin: 0 0 0 100px;
+  font-size: 90%;
+}
+.followed-body .handle {
+  display: block;
+  height: 10px;
+  font-size: 100%
+  border: 1px solid #bbb;
+}
+
+.followed-body .right .bio {
+  display: block;
+  padding: 0 0 0 0;
+  text-align: left;
+  }
 
 #initialmap {
 /*  min-height: 100%;*/

@@ -78,14 +78,14 @@ var userInfoInSidebar = function(users) {
 };
 
 var favouriteMapInSidebar = function(favouriteMapInfo) {
-  console.log(favouriteMapInfo);
+  //console.log(favouriteMapInfo);
   return `
     <article class="map">
       <div class="left">
         <img class="avatar" src="${favouriteMapInfo.avatar}">
       </div>
       <div class="right">
-        <div class="handle">${favouriteMapInfo.handle}: </div>
+        <div class="handle">${favouriteMapInfo.handle}:</div>
         <div class="map-name">"${favouriteMapInfo.name}"</div>
       </div>
     </article>
@@ -93,7 +93,17 @@ var favouriteMapInSidebar = function(favouriteMapInfo) {
 };
 
 var followedUsersInSidebar = function(followedUsersInfo) {
-
+  return `
+    <article class="followed">
+      <div class="left">
+        <img class="avatar" src="${followedUsersInfo.avatar}">
+      </div>
+      <div class="right">
+        <div class="handle">${followedUsersInfo.handle}</div>
+        <div class="bio">"${followedUsersInfo.bio}"</div>
+      </div>
+    </article>
+  `;
 };
 
 
@@ -104,10 +114,16 @@ var loadSidebar = function() {
   });
   $.get('/api/users/2/favourites', function(data) {
     //console.log(data);
-    $('.lower-sidebar-body').empty();
+    //$('.lower-sidebar-body').empty();
     data.forEach(function(entry) {
       //console.log(entry);
-      $('.lower-sidebar-body').append(favouriteMapInSidebar(entry));
+      $('.favorites-body').append(favouriteMapInSidebar(entry));
+    });
+  });
+  $.get('api/users/2/following', function(data) {
+    data.forEach(function(entry) {
+      console.log(entry);
+      $('.followed-body').hide().append(followedUsersInSidebar(entry));
     });
   });
 };
@@ -154,15 +170,30 @@ $(function() {
   //$.get('/api/users/:id').then(userInfoInSidebar());
 
 
-/* STUFF STUFF STUFF STUFF STUFF STUFF STUFF STUFF STUFF
-STUFF STUFF STUFF STUFF STUFF STUFF STUFF
-STUFF STUFF STUFF STUFF STUFF STUFF STUFF STUFF
-STUFF STUFF STUFF
-STUFF STUFF
-STUFF STUFF STUFF STUFF STUFF STUFF STUFF
-STUFF STUFF STUFF STUFF STUFF STUFF
-*/
+  // // Compose button functionality
+  // $('#nav-bar').find('.compose').on('click', function(event) {
+  //   if ($('.new-tweet').is(':hidden') ) {
+  //     $('.new-tweet').slideDown();
+  //     $('.new-tweet').find('textarea').focus();
+  //   } else {
+  //     $('.new-tweet').slideUp();
+  //   }
+  // });
 
+  // Toggle panes
+  $('.lower-sidebar').find('.favorites-header').on('click', function(event) {
+      if ($('.favorites-body').is(':hidden')) {
+        $('.followed-body').hide();
+        $('.favorites-body').show();
+      }
+  });
+
+  $('.lower-sidebar').find('.followed-header').on('click', function(event) {
+      if ($('.followed-body').is(':hidden')) {
+        $('.favorites-body').hide();
+        $('.followed-body').show();
+      }
+  });
 
 });
 
