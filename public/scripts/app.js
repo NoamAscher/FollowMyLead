@@ -15,47 +15,55 @@
 
 // map loading stuff (ported from html file)
 
-let tokenURL = 'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicG90YXRvd2F2ZSIsImEiOiJjaXVzbzlsbHIwMGZhMnVwdmVoMGphOHNvIn0.HyG4kMGYnE6zVYU6IBr66Q';
-let attribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
-var map = L.map('initialmap').setView([49.2566, -123.11554], 12);
-// here is a pretend set of locations.
-var locations = [
-  {id: 1, coords: [49.31841, -123.07725], title: 'Northvan', handle: '@billmurray', description: 'This is where I like to walk my dog when it\'s raining outside.', url: 'http://www.google.com', image: 'https://vanillicon.com/f485a272b3dbd1512f933f690acd6e13_50.png'},
-  {id: 2, coords: [49.28214, -123.11365], title: 'Gastown', handle: '@billmurray', description: 'This is where I like to walk my dog. ', url: 'http://www.google.com', image: 'https://vanillicon.com/f485a272b3dbd1512f933f690acd6e13_50.png'},
-  {id: 3, coords: [49.28213, -123.10854], title: 'Lighthouse Labs', handle: '@billmurray', description: 'Learning to code is one thing. Becoming a developer is a whole other ball-game. At Lighthouse Labs our goal is to take you from hobbyist to professional and be the launchpad for your career.', url: 'http://www.google.com', image: '/images/locations/lighthouselabs.jpg'}
-];
-const locationsArray = [];
-for (let i = 0; i < locations.length; i++) {
-  let handle = locations[i].handle;
-  let avatar = locations[i].avatar;
-  let description = locations[i].description;
-  let title = locations[i].title;
-  let url = locations[i].url;
-  let image = locations[i].image;
-  let html = renderHTML(handle, image, description, url, title);
-  locationsArray.push(L.marker(locations[i].coords).bindPopup(html));
-};
-L.tileLayer(tokenURL, { attribution: attribution, maxZoom: 18})
-.addTo(map);
-// the following method takes in an array of points to add to the map view
-L.layerGroup(locationsArray).addTo(map);
-function renderHTML(handle, avatar, description, url, place) {
-  var $section = $("<section>").addClass("popup-container").html('<img src=\'' + avatar + '\' class="popup-image"><br>' + '<span class="popup-placetitle"><h6>' + place + '</h6></span>');
-  var $header = $("<header>").addClass("popup-header");
-  var $content = $("<content>").addClass("popup-body").html(description + '<p>' + '<a class="popup-link" href=' + url + '>' + url + '</a>');
-  var $footer = $("<footer>").addClass("popup-footer").html("<button type='button' class='popup-edit'>Edit</button><button type='button' class='popup-delete'>Delete</button>");
-  $section.append($header);
-  $section.append($content);
-  $section.append($footer);
-  return $($section).prop('outerHTML');
-};
+// let tokenURL = 'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicG90YXRvd2F2ZSIsImEiOiJjaXVzbzlsbHIwMGZhMnVwdmVoMGphOHNvIn0.HyG4kMGYnE6zVYU6IBr66Q';
+// let attribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
+// var map = L.map('initialmap').setView([49.2566, -123.11554], 5);
+// // here is a pretend set of locations.
+// $.get( "api/locations/2", function(data) {
+//   const locationsArray = [];
+//   let newLocation;
+//   function onMapClick(e) {
+//     if (newLocation !== undefined) {
+//       map.removeLayer(newLocation);
+//     }
+//     let coords = [e.latlng.lat, e.latlng.lng];
+//     newLocation = L.marker(coords).bindPopup("i am a form" + coords).addTo(map).openPopup();
+//   }
+//   map.on('click', onMapClick);
+//   for (let i = 0; i < data.length; i++) {
+//     //let handle = data[i].handle;
+//     let avatar = data[i].avatar;
+//     let summary = data[i].summary;
+//     let name = data[i].name;
+//     let url = data[i].url;
+//     let image = data[i].img;
+//     let category = data[i].category;
+//     let html = renderHTML("handle", image, summary, url, name);
+//     let coords = [data[i].latitude, data[i].longitude];
+//     locationsArray.push(L.marker(coords).bindPopup(html));
+//     L.layerGroup(locationsArray).addTo(map);
+//   };
+// });
+// L.tileLayer(tokenURL, { attribution: attribution, maxZoom: 18})
+// .addTo(map);
+// // the following method takes in an array of points to add to the map view
+// function renderHTML(handle, avatar, description, url, place) {
+//   var $section = $("<section>").addClass("popup-container").html('<img src=\'' + avatar + '\' class="popup-image"><br>' + '<span class="popup-placetitle"><h6>' + place + '</h6></span>');
+//   var $header = $("<header>").addClass("popup-header");
+//   var $content = $("<content>").addClass("popup-body").html(description + '<p>' + '<a class="popup-link" href=' + url + '>' + url + '</a>');
+//   var $footer = $("<footer>").addClass("popup-footer").html("<button type='button' class='popup-edit'>Edit</button><button type='button' class='popup-delete'>Delete</button>");
+//   $section.append($header);
+//   $section.append($content);
+//   $section.append($footer);
+//   return $($section).prop('outerHTML');
+// };
 
 
 // subfunctions for the sidebar:
 
 
 
-var userInfoInSidebar = function(userInfo) {
+var userInfoInSidebar = function(users) {
   return `
     <article class="user">
       <header class="user-header">
@@ -69,28 +77,56 @@ var userInfoInSidebar = function(userInfo) {
   `;
 };
 
-var favouriteMapsInSidebar = function(favouriteMapsInfo) {
-
+var favouriteMapInSidebar = function(favouriteMapInfo) {
+  //console.log(favouriteMapInfo);
+  return `
+    <article class="map">
+      <div class="left">
+        <img class="avatar" src="${favouriteMapInfo.avatar}">
+      </div>
+      <div class="right">
+        <div class="handle">${favouriteMapInfo.handle}:</div>
+        <div class="map-name">"${favouriteMapInfo.name}"</div>
+      </div>
+    </article>
+  `;
 };
 
 var followedUsersInSidebar = function(followedUsersInfo) {
-
+  return `
+    <article class="followed">
+      <div class="left">
+        <img class="avatar" src="${followedUsersInfo.avatar}">
+      </div>
+      <div class="right">
+        <div class="handle">${followedUsersInfo.handle}</div>
+        <div class="bio">"${followedUsersInfo.bio}"</div>
+      </div>
+    </article>
+  `;
 };
 
 
-/* sample to mock:
-var renderTweets = function(tweets) {
-  var dom = tweets.reverse().map(createTweetElement);
-  $('#tweet-container').empty().append(dom);
+var loadSidebar = function() {
+  $.get('api/users/2', function(data) {
+    var theObject = data[0];
+    $('.upper-sidebar').empty().append(userInfoInSidebar(theObject));
+  });
+  $.get('/api/users/2/favourites', function(data) {
+    //console.log(data);
+    //$('.lower-sidebar-body').empty();
+    data.forEach(function(entry) {
+      //console.log(entry);
+      $('.favorites-body').append(favouriteMapInSidebar(entry));
+    });
+  });
+  $.get('api/users/2/following', function(data) {
+    data.forEach(function(entry) {
+      console.log(entry);
+      $('.followed-body').hide().append(followedUsersInSidebar(entry));
+    });
+  });
 };
-*/
-
-var renderSidebar = function(info) {    // info will contain whatever info the sidebar needs.
-  // do something to this if needed:
-  var sideDom = info;
-  $('.content-primary container-fluid').empty().append(sideDom);
-};
-
 
 
 // subfunctions for the map:
@@ -129,17 +165,37 @@ $(function() {
     }
   });
 
-/* STUFF STUFF STUFF STUFF STUFF STUFF STUFF STUFF STUFF
-STUFF STUFF STUFF STUFF STUFF STUFF STUFF
-STUFF STUFF STUFF STUFF STUFF STUFF STUFF STUFF
-STUFF STUFF STUFF
-STUFF STUFF
-STUFF STUFF STUFF STUFF STUFF STUFF STUFF
-STUFF STUFF STUFF STUFF STUFF STUFF
-*/
+  //$('.content-primary').append('<span>HI APPEND ME PLEASE</span');
+  loadSidebar();
+  //$.get('/api/users/:id').then(userInfoInSidebar());
 
 
-}
+  // // Compose button functionality
+  // $('#nav-bar').find('.compose').on('click', function(event) {
+  //   if ($('.new-tweet').is(':hidden') ) {
+  //     $('.new-tweet').slideDown();
+  //     $('.new-tweet').find('textarea').focus();
+  //   } else {
+  //     $('.new-tweet').slideUp();
+  //   }
+  // });
+
+  // Toggle panes
+  $('.lower-sidebar').find('.favorites-header').on('click', function(event) {
+      if ($('.favorites-body').is(':hidden')) {
+        $('.followed-body').hide();
+        $('.favorites-body').show();
+      }
+  });
+
+  $('.lower-sidebar').find('.followed-header').on('click', function(event) {
+      if ($('.followed-body').is(':hidden')) {
+        $('.favorites-body').hide();
+        $('.followed-body').show();
+      }
+  });
+
+});
 
 
 

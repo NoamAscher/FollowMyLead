@@ -12,10 +12,7 @@
 </head>
 <body>
 
-<script type="text/javascript" src="/app.js"></script>
-
-
-
+<script type="text/javascript" src="scripts/app.js"></script>
 
 <div class="container-fluid">
     <nav id="nav-bar">
@@ -35,26 +32,65 @@
       </div>
     </nav>
   <main class="content-primary container-fluid">
+
+    <% if (!loggedin) { %>
+
     <article class="user">
     <header class="user-header"><img class="avatar" src="avatars/billymurray.jpg"><span class="handle">@billmurray2016</span></header>
     <span class="bio">Murray was born on September 21, 1950 in Evanston, Illinois, and was raised in Wilmette, Illinois, a northern suburb of Chicago. </span>
     </article>
-    <article class="user">
-    <header class="user-header"><img class="avatar" src="avatars/billymurray.jpg"><span class="handle">@billmurray2016</span></header>
-    <span class="bio">Murray was born on September 21, 1950 in Evanston, Illinois, and was raised in Wilmette, Illinois, a northern suburb of Chicago. </span>
-    </article>
+
+    <% } %>
+
+    <div class="upper-sidebar">
+      <article class="user">
+      <header class="user-header"><img class="avatar" src="avatars/billymurray.jpg"><span class="handle">@billmurray2016</span></header>
+      <span class="bio">Murray was born on September 21, 1950 in Evanston, Illinois, and was raised in Wilmette, Illinois, a northern suburb of Chicago. </span>
+      </article>
+      <!--
+      <article class="user">
+      <header class="user-header"><img class="avatar" src="avatars/billymurray.jpg"><span class="handle">@billmurray2016</span></header>
+      <span class="bio">Murray was born on September 21, 1950 in Evanston, Illinois, and was raised in Wilmette, Illinois, a northern suburb of Chicago. </span>
+      </article>
+      -->
+    </div>
+    <div class="lower-sidebar">
+      <div class="lower-sidebar-header">
+        <span class="favorites-header">Favorite Maps</span>
+        <span class="followed-header">Followed Users</span>
+      </div>
+      <div class="favorites-body">
+      </div>
+      <div class="followed-body">
+      </div>
+    </div>
   </main>
   <aside class="content-secondary">
     <div id="initialmap"></div>
     <div class="footer-favorites">
 
-      <div class="footer-image">IMAGE</div>
-      <div class="footer-image">IMAGE</div>
-      <div class="footer-image">IMAGE</div>
-      <div class="footer-image">IMAGE</div>
-      <div class="footer-image">IMAGE</div>
-      <div class="footer-image">IMAGE</div>
-      <div class="footer-image">IMAGE</div>
+    <% if (!loggedin) { %>
+      <img class="footer-image" src="avatars/billymurray.jpg">
+      <img class="footer-image" src="avatars/ben.jpg">
+      <img class="footer-image" src="avatars/christopher.jpg">
+      <img class="footer-image" src="avatars/scarJO.jpg">
+      <img class="footer-image" src="avatars/Dan_Aykroyd.jpg">
+      <img class="footer-image" src="avatars/liam.jpg">
+      <img class="footer-image" src="avatars/billymurray.jpg">
+      <% } %>
+
+       <% if (loggedin) { %>
+      <img class="footer-image" src="avatars/chi.jpg">
+      <img class="footer-image" src="avatars/chi.jpg">
+      <img class="footer-image" src="avatars/chi.jpg">
+      <img class="footer-image" src="avatars/chi.jpg">
+      <img class="footer-image" src="avatars/chi.jpg">
+      <img class="footer-image" src="avatars/chi.jpg">
+      <img class="footer-image" src="avatars/chi.jpg">
+
+      <% } %>
+
+
 
     </div>
   </aside>
@@ -173,5 +209,6 @@
     };
 
     </script>
+
 </body>
 </html>

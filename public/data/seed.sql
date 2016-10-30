@@ -4,31 +4,33 @@ INSERT INTO users (id, handle, email, password, bio, avatar)
 
 INSERT INTO users (id, handle, email, password, bio, avatar)
   VALUES (2, 'BillMurray', 'bill@fillmurray.com', 'lhl',
-    'I am Bill Murray.', '/images/avatars/bill_murray.jpg');
+    'Bill Murray was born on September 21, 1950 in Evanston, Illinois,
+    and was raised in Wilmette, Illinois, a northern suburb of Chicago.',
+    '/images/avatars/bill_murray.jpg');
 
 INSERT INTO users (id, handle, email, password, bio, avatar)
   VALUES (3, 'Paris', 'hilton@email.com', 'lhl',
-    ':-)', '/images/avatars/img_2_b_added.jpg');
+    ':-)', '/images/avatars/Paris-Hilton-and-her-dog.jpg');
 
 INSERT INTO users (id, handle, email, password, bio, avatar)
-  VALUES (4, 'random_celeb', 'random_celeb@celeb.org', 'lhl',
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
-    '/images/avatars/img_3_b_added.jpg');
-
-INSERT INTO users (id, handle, email, password, bio, avatar)
-  VALUES (5, 'Cicero', 'cicero@ancient.rome', 'lhl',
+  VALUES (4, 'Cicero', 'cicero@ancient.rome', 'lhl',
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
     '/images/avatars/218px-Cicero.jpg');
 
 INSERT INTO users (id, handle, email, password, bio, avatar)
-  VALUES (6, 'Louis C.K.', 'louis@notoninternet.com', 'lhl',
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
-    '/images/avatars/218px-Cicero.jpg');
+  VALUES (5, 'random_celeb', 'random_celeb@celeb.org', 'lhl',
+    'Freegan schlitz craft beer, pop-up ugh williamsburg banh mi mustache vaporware',
+    '/images/avatars/random_celeb.jpg');
+
+INSERT INTO users (id, handle, email, password, bio, avatar)
+  VALUES (6, 'Jack', 'heres@johnny.com', 'lhl',
+    'All work and no play makes Jack a dull boy',
+    '/images/avatars/jackolantern.jpg');
 
 INSERT INTO users (id, handle, email, password, bio, avatar)
   VALUES (7, 'SpongeBob', 'spongebob@squarepants.net', 'lhl',
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
-    '/images/avatars/218px-Cicero.jpg');
+    'I''m ugly and I''m proud.',
+    '/images/avatars/spongebob.jpg');
 
 
 INSERT INTO maps (id, user_id, name, date_created)
@@ -98,6 +100,10 @@ INSERT INTO locations (id, name, summary, latitude, longitude, category, url, im
 */
 
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> origin
 INSERT INTO map_locations (id, location_id, map_id, user_id)
   VALUES (1, 1, 1, 1);
 INSERT INTO map_locations (id, location_id, map_id, user_id)
