@@ -87,17 +87,16 @@ var followedUsersInSidebar = function(followedUsersInfo) {
 
 
 var loadSidebar = function() {
+  console.log("hi");
   $.get('api/users/2', function(data) {
     var theObject = data[0];
     $('.upper-sidebar').empty().append(userInfoInSidebar(theObject));
   });
-  $.get('/api/users/2/favourites', function(data) {
-    data.forEach(entry, function() {
-      $.get('api/users/entry.user_id', function(data) {
-        var theObject = data[0];entry.
-      })
-    });
-  };
+  // $.get('/api/users/2/favourites', function(data) {
+  //   data.forEach(entry, function() {
+  //     console.log(entry);
+  //   });
+  // };
 };
 
 
