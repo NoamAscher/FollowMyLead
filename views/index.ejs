@@ -218,7 +218,7 @@
       var $header = $("<header>").addClass("popup-header");
       var $content = $("<content>").addClass("popup-body").html(description + '<p>' + '<a class="popup-link" href=' + url + '>' + url + '</a>');
       var $footer = $("<footer>").addClass("popup-footer").html("<form method='post' action='/locations/" + locationId + "?_method=DELETE' ><button class='popup-edit' type='submit' value='Submit'>Delete</button></form>");
-      var $footer = $("<footer>").addClass("popup-footer").html("<button value='submit' class='popup-edit'>Edit</button><form method='post' action='/locations/" + id + "?_method=DELETE' ><button class='popup-delete' type='submit' value='Submit'>Delete</button></form>");
+      var $footer = $("<footer>").addClass("popup-footer").html("<button value='submit' class='popup-edit'>Edit</button><form method='post' action='/locations/" + locationId + "?_method=DELETE' ><button class='popup-delete' type='submit' value='Submit'>Delete</button></form>");
 
 
       $section.append($header);
