@@ -53,7 +53,7 @@ INSERT INTO maps (id, user_id, name, date_created)
   VALUES(7, 1, 'Forrest''s Other Map', '2016.10.06');
 
 
-
+/*
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
   VALUES (1, 'Waterfront Station',
     'Horrible food! Mediocre service and horrible food!',
@@ -95,7 +95,7 @@ INSERT INTO locations (id, name, summary, latitude, longitude, category, url, im
     'Horrible food! Mediocre service and horrible food!',
     '49.2849163', '-123.1157802', 'transportation', 'www.waterfront.van', '/images/locations/waterfront.jpg',
     2, 6, '2016.08.30');
-
+*/
 
 
 /*

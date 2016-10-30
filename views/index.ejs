@@ -11,12 +11,24 @@
   <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
 </head>
 <body>
+
+
   <script type="text/javascript" src="/scripts/app.js"></script>
 <div class="container-fluid">
     <nav id="nav-bar">
-    <div class="container-fluid">
-      <img class="logo" src="images/followmylead.png">
-      <button type="submit" class="btn btn-secondary">LOGIN</button>
+      <div class="container-fluid">
+        <img class="logo" src="images/followmylead.png">
+
+
+
+        <div style="float:right;">
+          Logged in:
+          <% if(loggedin) { %>
+            TRUE <form method="POST" action="/logout"><button action="/logout" type="submit" class="btn btn-secondary">LOGOUT</button></form>
+          <% } else { %>
+            FALSE <form method="GET" action="/login"><button action="/login" type="submit" class="btn btn-secondary">LOGIN</button></form>
+          <% } %>
+        </div>
       </div>
     </nav>
   <main class="content-primary container-fluid">
@@ -42,6 +54,11 @@
     </div>
   </aside>
 </div>
+
+
+
+
+
 <script>
     let tokenURL = 'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicG90YXRvd2F2ZSIsImEiOiJjaXVzbzlsbHIwMGZhMnVwdmVoMGphOHNvIn0.HyG4kMGYnE6zVYU6IBr66Q';
     let attribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';

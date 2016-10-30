@@ -27,11 +27,15 @@ app.use(cookieSession({
 }));
 
 app.get('/', function(req, res) {
-  res.render('index');
+  var loggedin = false;
+  if (req.session.userId) {
+    loggedin = true;
+  }
+  console.log('loggedin is ', loggedin)
+  res.render('index', {loggedin: loggedin});
 });
 
 app.get('/users/:id', function(req, res) {
-  req.session.userId = req.params.id;
   knex.select().from('users').innerJoin('maps', 'users.id', 'user_id').where('users.id', req.params.id)
   .then(function(users) {
     res.render('user.html')
@@ -55,16 +59,16 @@ app.get('/api/users/:id', function(req, res) {
 });
 
 app.get('/logout', function (req, res) {
-  req.session.userId = null;
-  console.log('logged out user');
+  req.session = null;
   res.redirect('/');
-})
+  console.log('logged out user');
+});
 
 app.get('/login', function(req, res) {
-  req.session.userId = 100;
+  req.session.userId = 1;
   console.log('logged in');
   res.redirect('/');
-})
+});
 
 app.get('/api/locations/:id', function(req, res) {
   knex.select().from('locations').where('user_id', req.params.id)

@@ -56,12 +56,11 @@ body {
   .btn-secondary {
     display: inline;
     float: right;
-    margin-right: 80px;
-    margin-top: 20px;
+    margin-top: 8px;
   }
 
 
-#compose {
+/*#compose {
   float: right;
   margin: 15px 90px 0 0;
   padding: 12px 8px;
@@ -73,7 +72,7 @@ body {
   &:hover {
     color: #00a087;
   }
-}
+}*/
 
 .avatar {
   width: 90px;
