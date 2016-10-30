@@ -85,7 +85,7 @@ var favouriteMapInSidebar = function(favouriteMapInfo) {
         <img class="avatar" src="${favouriteMapInfo.avatar}">
       </div>
       <div class="right">
-        <div class="handle">${favouriteMapInfo.handle}: </div>
+        <div class="handle">${favouriteMapInfo.handle}:</div>
         <div class="map-name">"${favouriteMapInfo.name}"</div>
       </div>
     </article>
@@ -99,7 +99,7 @@ var followedUsersInSidebar = function(followedUsersInfo) {
         <img class="avatar" src="${followedUsersInfo.avatar}">
       </div>
       <div class="right">
-        <div class="handle">${followedUsersInfo.handle}: </div>
+        <div class="handle">${followedUsersInfo.handle}</div>
         <div class="bio">"${followedUsersInfo.bio}"</div>
       </div>
     </article>
@@ -182,16 +182,16 @@ $(function() {
 
   // Toggle panes
   $('.lower-sidebar').find('.favorites-header').on('click', function(event) {
-      if ($('.favorites-header').is('hidden')) {
-        $('.followed-header').hide("slide", { direction: "up" }, 1000);
-        $('.favorites-header').show("slide", { direction: "down" }, 1000);
+      if ($('.favorites-body').is(':hidden')) {
+        $('.followed-body').hide();
+        $('.favorites-body').show();
       }
   });
 
   $('.lower-sidebar').find('.followed-header').on('click', function(event) {
-      if ($('.followed-header').is('hidden')) {
-        $('.favorites-header').hide("slide", { direction: "up" }, 1000);
-        $('.followed-header').show("slide", { direction: "down" }, 1000);
+      if ($('.followed-body').is(':hidden')) {
+        $('.favorites-body').hide();
+        $('.followed-body').show();
       }
   });
 
