@@ -31,7 +31,7 @@ app.get('/', function(req, res) {
   if (req.session.userId) {
     loggedin = true;
   }
-  console.log('loggedin is ', loggedin)
+  console.log('loggedin is ', loggedin);
   res.render('index', {loggedin: loggedin});
 });
 
@@ -81,6 +81,17 @@ app.get('/api/locations/:id', function(req, res) {
   })
 });
 
+app.get('/api/location/:id', function(req, res) {
+  knex.select().from('locations').where('id', req.params.id)
+  .then(function (locations) {
+    res.json(locations);
+  })
+  .catch(function(error) {
+    console.error(error);
+    res.json({error: {message: error}})
+  })
+});
+
 
 app.get('/api/maps/:id', function(req, res) {
   knex.select().from('maps').where('id', req.params.id)
@@ -115,9 +126,10 @@ app.post('/maps/new', function(req, res) {
 app.post('/maps/:id/locations', function(req, res) {
   console.log("MAP ID", req.params.id);
   console.log(req.session.userId);
-  knex('locations').insert({'name': req.body.name, 'summary': req.body.summary, 'latitude': req.body.lat, 'longitude': req.body.long, 'category': req.body.category, 'url': req.body.url, 'img': req.body.img, 'user_id': req.session.userId, 'map_id': req.params.id })
+  knex('locations').insert({'name': req.body.name, 'summary': req.body.summary, 'latitude': req.body.lat, 'longitude': req.body.long, 'category': req.body.category, 'url': req.body.url, 'img': req.body.image, 'user_id': req.session.userId, 'map_id': req.params.id })
+  .returning("id")
   .then(function(result) {
-    res.json({success: true});
+    res.json(result);
   })
   .catch(function(error) {
     console.error(error);
@@ -128,7 +140,7 @@ app.post('/maps/:id/locations', function(req, res) {
 
 // NOT DONE - NEED MAP API REFERENCE
 app.post('/maps/:id/locations/copy', function(req, res) {
-  knex('locations').insert({'name': req.body.name, 'summary': req.body.summary, 'latitude': ASKMIKE, 'longitude': ASKMIKE, 'category': req.body.category, 'url': req.body.url, 'img': req.body.img, 'user_id': req.session.userId, 'map_id': req.params.id, 'date_created': Date.now()})
+  knex('locations').insert({'name': req.body.name, 'summary': req.body.summary, 'latitude': req.body.lat, 'longitude': req.body.long, 'category': req.body.category, 'url': req.body.url, 'img': req.body.image, 'user_id': req.session.userId, 'map_id': req.params.id })
   .then(function(result) {
     res.redirect({success: true});
   })
@@ -139,7 +151,9 @@ app.post('/maps/:id/locations/copy', function(req, res) {
 });
 
 app.put('/locations/:id', function(req, res) {
-  knex('locations').insert({'name': req.body.name, 'summary': req.body.summary, 'latitude': ASKMIKE, 'longitude': ASKMIKE, 'category': req.body.category, 'url': req.body.url, 'img': req.body.img, 'user_id': req.session.userId, 'map_id': req.params.id, 'date_created': Date.now()})
+  knex('locations')
+  .where('id', req.params.id)
+  .update({'name': req.body.name, 'summary': req.body.summary, 'latitude': req.body.lat, 'longitude': req.body.long, 'category': req.body.category, 'url': req.body.url, 'img': req.body.image, 'user_id': req.session.userId })
   .then(function(result) {
     res.redirect('/');
   })
@@ -150,9 +164,9 @@ app.put('/locations/:id', function(req, res) {
 });
 
 app.delete('/locations/:id', function(req, res) {
+  console.log("hello")
   knex('locations').where('id', req.params.id).del()
   .then(function(result) {
-    res.redirect('/');
   })
   .catch(function(error) {
     console.error(error);
