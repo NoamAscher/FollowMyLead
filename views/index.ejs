@@ -12,8 +12,6 @@
 </head>
 <body>
 
-<script type="text/javascript" src="scripts/app.js"></script>
-
 <div class="container-fluid">
     <nav id="nav-bar">
       <div class="container-fluid">
@@ -90,8 +88,6 @@
 
       <% } %>
 
-
-
     </div>
   </aside>
 </div>
@@ -104,7 +100,9 @@
     $.get( "api/locations/1", function(data) {
       const locationsArray = [];
       let newLocation;
+
       function onMapClick(e) {
+
         if (newLocation !== undefined) {
           map.removeLayer(newLocation);
         }
@@ -119,12 +117,56 @@
 
       }
 
-      map.on('click', onMapClick);
+      //map.on('click', onMapClick);
+
+          // test code
+
+        // map.on('click', function(e) {
+
+        //   var marker = L.marker(e.latlng).addTo(map);
+
+        //   var edit_popup = L.DomUtil.create('form', 'edit-form');
+
+        //   var html = renderEditForm("test", "test", "test", "test","test");
+
+        //   var edit_button = L.DomUtil.create('button', 'edit-button');
+
+        //   edit_popup.innerHTML = html + edit_button.outerHTML;
+
+        //   $('.edit-toggle', edit_popup).on('click', function() {
+
+        //       alert("dicks");
+        //   });
+
+        //   marker.bindPopup(edit_popup).openPopup();
+
+        // });
+
+        map.on('click', function(e) {
+
+            var marker = L.marker(e.latlng).addTo(map);
+
+            var editPopup = L.DomUtil.create('div', 'info-edit-popup');
+
+            var html = renderEditForm("test", "test", "test", "test", "test");
+
+            editPopup.innerHTML = html + '<a class="removeme">Remove Marker</a>';
+
+            $('.removeme', editPopup).on('click', function() {
+                $('.edit-form').toggle();
+            });
+
+            marker.bindPopup(editPopup).openPopup();
+
+        });
+
+
+    // test code
 
       console.log(data);
 
       for (let i = 0; i < data.length; i++) {
-        //let handle = data[i].handle;
+
         let avatar = data[i].avatar;
         let summary = data[i].summary;
         let name = data[i].name;
@@ -132,25 +174,52 @@
         let image = data[i].img;
         let category = data[i].category;
         let locationId = data[i].id;
-        let html = renderHTML(locationId, image, summary, url, name);
+
+        var displayPopup = L.DomUtil.create('div', 'display-popup');
+
+        let htmlView = renderHTML(locationId, image, summary, url, name);
+
+        let editView = renderEditForm("test", "test", "test", "test", "test");
+
+        displayPopup.innerHTML = htmlView + editView;
+
         let coords = [data[i].latitude, data[i].longitude];
-        locationsArray.push(L.marker(coords).bindPopup(html));
+        locationsArray.push(L.marker(coords).bindPopup(displayPopup));
+
         L.layerGroup(locationsArray).addTo(map);
 
 
+        $('.popup-edit', displayPopup).load(function () {
+          $('.popup-edit-form').hide();
+        });
+
+        $('.popup-edit', displayPopup).on('click', function() {
+          $('.popup-html-container').hide();
+          $('.popup-edit-form').show();
+        });
 
       };
+
+
     });
+
     L.tileLayer(tokenURL, { attribution: attribution, maxZoom: 18})
     .addTo(map);
+
+
+
+
+
     // the following method takes in an array of points to add to the map view
 
     function renderHTML(locationId, avatar, description, url, place) {
 
-      var $section = $("<section>").addClass("popup-container").html('<img src=\'' + avatar + '\' class="popup-image"><br>' + '<span class="popup-placetitle"><h6>' + place + '</h6></span>');
+      var $section = $("<section>").addClass("popup-html-container").html('<img src=\'' + avatar + '\' class="popup-image"><br>' + '<span class="popup-placetitle"><h6>' + place + '</h6></span>');
       var $header = $("<header>").addClass("popup-header");
       var $content = $("<content>").addClass("popup-body").html(description + '<p>' + '<a class="popup-link" href=' + url + '>' + url + '</a>');
       var $footer = $("<footer>").addClass("popup-footer").html("<form method='post' action='/locations/" + locationId + "?_method=DELETE' ><button class='popup-edit' type='submit' value='Submit'>Delete</button></form>");
+      var $footer = $("<footer>").addClass("popup-footer").html("<button value='submit' class='popup-edit'>Edit</button><form method='post' action='/locations/" + id + "?_method=DELETE' ><button class='popup-delete' type='submit' value='Submit'>Delete</button></form>");
+
 
       $section.append($header);
       $section.append($content);
@@ -162,7 +231,7 @@
 
     function renderForm(user, lat, long) {
 
-      var $form = $("<form>").attr("method", "POST").attr("action", "/maps/" + user + "/locations/").addClass("popup-form");
+      var $form = $("<form>").attr("method", "POST").attr("action", "/maps/" + user + "/locations/").addClass("popup-new-form");
 
       var $nameLabel = $("<label>").attr("for", "name").text("Name");
       var $summaryLabel = $("<label>").attr("for", "summary").text("Summary");
@@ -175,7 +244,7 @@
       var $image = $("<input>").attr("id", "image_field").attr("name", "image");
       var $long = $("<input>").attr("id", "long_field").attr("name", "long").attr("type", "hidden").attr("value", long);
       var $lat = $("<input>").attr("id", "lat_field").attr("name", "lat").attr("type", "hidden").attr("value", lat);
-      var $button = $("<button>");
+      var $button = $("<button>").text("submit");
 
       var $category = $("<select>");
 
@@ -206,9 +275,60 @@
 
       return $($form).prop('outerHTML');
 
+
+    };
+
+    function renderEditForm(name, summary, url, image, user) {
+
+      var $form = $("<form>").attr("method", "POST").attr("action", "/maps/" + user + "/locations/").attr("style", "display:none;").addClass("popup-edit-form");
+
+      var $nameLabel = $("<label>").attr("for", "name").text("Name");
+      var $summaryLabel = $("<label>").attr("for", "summary").text("Summary");
+      var $urlLabel = $("<label>").attr("for", "url").text("URL");
+      var $imageLabel = $("<label>").attr("for", "image").text("Image");
+
+      var $name = $("<input>").attr("id", "name_field").attr("name", "name").attr("value", name);
+      var $summary = $("<input>").attr("id", "summary_field").attr("name", "summary").attr("value", summary);
+      var $url = $("<input>").attr("id", "url_field").attr("name", "url").attr("value", url);
+      var $image = $("<input>").attr("id", "image_field").attr("name", "image").attr("value", image);
+      // var $long = $("<input>").attr("id", "long_field").attr("name", "long").attr("type", "hidden").attr("value", long);
+      // var $lat = $("<input>").attr("id", "lat_field").attr("name", "lat").attr("type", "hidden").attr("value", lat);
+      var $button = $("<button>").text("Submit");
+
+      var $category = $("<select>");
+
+      var $points = $("<option>").attr("value", "Points of Interest").html("Points of Interest");
+      var $beaches = $("<option>").attr("value", "Beaches").html("Beaches");
+      var $restaurants = $("<option>").attr("value", "Restaurants").html("Restaurants");
+      var $parks = $("<option>").attr("value", "Parks and Nature").html("Parks and Nature");
+      var $cafes = $("<option>").attr("value", "Cafes").html("Cafes");
+
+      $category.append($points);
+      $category.append($beaches);
+      $category.append($restaurants);
+      $category.append($parks);
+      $category.append($cafes);
+
+      $form.append($nameLabel);
+      $form.append($name);
+      $form.append($summaryLabel);
+      $form.append($summary);
+      $form.append($urlLabel);
+      $form.append($url);
+      $form.append($imageLabel);
+      $form.append($image);
+      // $form.append($long);
+      // $form.append($lat);
+      $form.append($category);
+      $form.append($button);
+
+      return $($form).prop('outerHTML');
+
     };
 
     </script>
+
+    <script type="text/javascript" src="/scripts/app.js"></script>
 
 </body>
 </html>

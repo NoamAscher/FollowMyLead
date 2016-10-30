@@ -113,7 +113,7 @@ app.post('/maps/new', function(req, res) {
 
 // NOT DONE - NEED MAP API REFERENCE
 app.post('/maps/:id/locations', function(req, res) {
-  console.log(req.params.id);
+  console.log("MAP ID", req.params.id);
   console.log(req.session.userId);
   knex('locations').insert({'name': req.body.name, 'summary': req.body.summary, 'latitude': req.body.lat, 'longitude': req.body.long, 'category': req.body.category, 'url': req.body.url, 'img': req.body.img, 'user_id': req.session.userId, 'map_id': req.params.id })
   .then(function(result) {
@@ -141,7 +141,7 @@ app.post('/maps/:id/locations/copy', function(req, res) {
 app.put('/locations/:id', function(req, res) {
   knex('locations').insert({'name': req.body.name, 'summary': req.body.summary, 'latitude': ASKMIKE, 'longitude': ASKMIKE, 'category': req.body.category, 'url': req.body.url, 'img': req.body.img, 'user_id': req.session.userId, 'map_id': req.params.id, 'date_created': Date.now()})
   .then(function(result) {
-    res.json({success: true});
+    res.redirect('/');
   })
   .catch(function(error) {
     console.error(error);
@@ -150,10 +150,9 @@ app.put('/locations/:id', function(req, res) {
 });
 
 app.delete('/locations/:id', function(req, res) {
-
   knex('locations').where('id', req.params.id).del()
   .then(function(result) {
-    res.json({success: true});
+    res.redirect('/');
   })
   .catch(function(error) {
     console.error(error);
