@@ -48,11 +48,13 @@
 
     <% } %>
 
+    <% if (loggedin) { %>
+
     <div class="upper-sidebar">
-      <article class="user">
+      <!-- <article class="user">
       <header class="user-header"><img class="avatar" src="avatars/billymurray.jpg"><span class="handle">@billmurray2016</span></header>
       <span class="bio">Murray was born on September 21, 1950 in Evanston, Illinois, and was raised in Wilmette, Illinois, a northern suburb of Chicago. </span>
-      </article>
+      </article> -->
       <!--
       <article class="user">
       <header class="user-header"><img class="avatar" src="avatars/billymurray.jpg"><span class="handle">@billmurray2016</span></header>
@@ -60,6 +62,9 @@
       </article>
       -->
     </div>
+     <% } %>
+
+    <% if (loggedin) { %>
     <div class="lower-sidebar">
       <div class="lower-sidebar-header">
         <span class="favorites-header">Favorite Maps</span>
@@ -68,6 +73,7 @@
       <div class="lower-sidebar-body">
       </div>
     </div>
+      <% } %>
   </main>
   <aside class="content-secondary">
     <div id="initialmap"></div>

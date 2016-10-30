@@ -63,6 +63,11 @@
 
 
 
+
+
+
+
+
 var userInfoInSidebar = function(users) {
   return `
     <article class="user">
@@ -97,12 +102,16 @@ var followedUsersInSidebar = function(followedUsersInfo) {
 };
 
 
-var loadSidebar = function() {
-  $.get('api/users/2', function(data) {
+
+var loadUser = function() {
+  $.get('api/users/1', function(data) {
     var theObject = data[0];
     $('.upper-sidebar').empty().append(userInfoInSidebar(theObject));
-  });
-  $.get('/api/users/2/favourites', function(data) {
+  })
+};
+
+ var loadFavourites = function () {
+    $.get('/api/users/2/favourites', function(data) {
     //console.log(data);
     $('.lower-sidebar-body').empty();
     data.forEach(function(entry) {
@@ -150,7 +159,18 @@ $(function() {
   });
 
   //$('.content-primary').append('<span>HI APPEND ME PLEASE</span');
-  loadSidebar();
+
+
+  loadUser();
+
+
+
+  loadFavourites();
+
+
+
+
+
   //$.get('/api/users/:id').then(userInfoInSidebar());
 
 
@@ -165,6 +185,8 @@ STUFF STUFF STUFF STUFF STUFF STUFF
 
 
 });
+
+
 
 
 
