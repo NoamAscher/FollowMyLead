@@ -164,9 +164,9 @@ app.put('/locations/:id', function(req, res) {
 });
 
 app.delete('/locations/:id', function(req, res) {
+  console.log("hello")
   knex('locations').where('id', req.params.id).del()
   .then(function(result) {
-    res.redirect('/');
   })
   .catch(function(error) {
     console.error(error);
