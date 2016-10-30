@@ -1,29 +1,15 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Gist
- @NoamAscher
- Unwatch 3
-  Star 0
- Fork 0 nicadams/Midterm
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Pulse  Graphs
-Branch: jquery_rebranch Find file Copy pathMidterm/public/scripts/app.js
-0986c71  an hour ago
-@NoamAscher NoamAscher lower sidebar css set up
-2 contributors @NoamAscher @nicadams
-RawBlameHistory
-172 lines (127 sloc)  4.64 KB
 
 
 /* AJAX needs
+
 - on DOM ready, how to run the following routes:
   - load user info
   - load followers (favourite maps would load on an event)
   - load the map of that user
   - people following the map
+
 - loadFollowing function - dynamically alter the page accordingly (the purple version)
+
 */
 
 
@@ -78,7 +64,6 @@ RawBlameHistory
 
 
 var userInfoInSidebar = function(users) {
-  console.log(users);
   return `
     <article class="user">
       <header class="user-header">
@@ -104,10 +89,13 @@ var followedUsersInSidebar = function(followedUsersInfo) {
 var loadSidebar = function() {
   $.get('api/users/2', function(data) {
     var theObject = data[0];
-    console.log(theObject);
     $('.upper-sidebar').empty().append(userInfoInSidebar(theObject));
-    });
-  //$.get('api/users/3', )
+  });
+  // $.get('/api/users/2/favourites', function(data) {
+  //   data.forEach(entry, function() {
+  //     console.log(entry);
+  //   });
+  // };
 };
 
 
@@ -184,5 +172,3 @@ STUFF STUFF STUFF STUFF STUFF STUFF
 
 
 // });
-Contact GitHub API Training Shop Blog About
-© 2016 GitHub, Inc. Terms Privacy Security Status Help
