@@ -112,39 +112,11 @@ DELETE * FROM locations
 
 
 
-/* The rest of this is deprecated along with map_locations
+/* 11. Select favorite maps: */
 
-Given: values (8, 5, 1, 1) for (id, location_id, map_id, user_id);
-note that location_id = 5; then:
-
-DELETE FROM map_locations
-  WHERE id = 8;
-
-DELETE * FROM locations
-  WHERE id = 5
-  AND id NOT IN
-  (SELECT location_id FROM map_locations
-    WHERE location_id = 5);
-
-  /* given current seed file, this version won't delete the location. to make it work,
-  add a new location as in 7. and then delete it as in 10.
-
-
-
-template...oid... for this
-
-/* delete from del_table
-where RevCode = '3'
-  and  Category  in
-    (select Category from del_table
-     where RevCode in ('2','3')
-     group by Category
-     having count(distinct RevCode) =2 )
-
-     */
-
-
-/*
-
-*/
+SELECT distinct avatar, handle, name
+  FROM users JOIN maps ON users.id=user_id JOIN favourite_maps ON maps.id=map_id
+  WHERE map_id IN
+  (SELECT map_id
+    FROM favourite_maps WHERE user_id = 1);
 

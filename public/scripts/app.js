@@ -64,7 +64,6 @@
 
 
 var userInfoInSidebar = function(users) {
-  console.log(users);
   return `
     <article class="user">
       <header class="user-header">
@@ -90,10 +89,15 @@ var followedUsersInSidebar = function(followedUsersInfo) {
 var loadSidebar = function() {
   $.get('api/users/2', function(data) {
     var theObject = data[0];
-    console.log(theObject);
     $('.upper-sidebar').empty().append(userInfoInSidebar(theObject));
+  });
+  $.get('/api/users/2/favourites', function(data) {
+    data.forEach(entry, function() {
+      $.get('api/users/entry.user_id', function(data) {
+        var theObject = data[0];entry.
+      })
     });
-  //$.get('api/users/3', )
+  };
 };
 
 
