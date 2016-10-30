@@ -4,7 +4,9 @@ INSERT INTO users (id, handle, email, password, bio, avatar)
 
 INSERT INTO users (id, handle, email, password, bio, avatar)
   VALUES (2, 'BillMurray', 'bill@fillmurray.com', 'lhl',
-    'I am Bill Murray.', '/images/avatars/bill_murray.jpg');
+    'Bill Murray was born on September 21, 1950 in Evanston, Illinois,
+    and was raised in Wilmette, Illinois, a northern suburb of Chicago.',
+    '/images/avatars/bill_murray.jpg');
 
 INSERT INTO users (id, handle, email, password, bio, avatar)
   VALUES (3, 'Paris', 'hilton@email.com', 'lhl',

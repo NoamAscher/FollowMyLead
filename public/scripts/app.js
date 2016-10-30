@@ -87,31 +87,13 @@ var followedUsersInSidebar = function(followedUsersInfo) {
 };
 
 
-/* sample to mock:
-var renderTweets = function(tweets) {
-  var dom = tweets.reverse().map(createTweetElement);
-  $('#tweet-container').empty().append(dom);
-};
-
-// Loads and then renders the tweets
-var loadTweets = function() {
-  $.get('/tweets').then(renderTweets);
-};
-*/
-
-
-// var renderSidebar = function(info) {    // info will contain whatever info the sidebar needs.
-//   // do something to this if needed:
-//   var sideDom = info.map(userInfoInSidebar);
-//   $('.content-primary container-fluid').append(sideDom);
-// };
-
 var loadSidebar = function() {
-  $.get('api/users/3', function(data) {
+  $.get('api/users/2', function(data) {
     var theObject = data[0];
     console.log(theObject);
-    $('.content-primary').empty().append(userInfoInSidebar(theObject));
+    $('.upper-sidebar').empty().append(userInfoInSidebar(theObject));
     });
+  //$.get('api/users/3', )
 };
 
 

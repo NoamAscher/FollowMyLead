@@ -10,7 +10,7 @@ CREATE TABLE users (
   handle VARCHAR(25),
   email VARCHAR(50),
   password VARCHAR(50),
-  bio VARCHAR(100),
+  bio VARCHAR(150),
   avatar VARCHAR(50)
 );
 
