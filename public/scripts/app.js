@@ -98,11 +98,11 @@ var followedUsersInSidebar = function(followedUsersInfo) {
 
 
 var loadSidebar = function() {
-  $.get('api/users/4', function(data) {
+  $.get('api/users/2', function(data) {
     var theObject = data[0];
     $('.upper-sidebar').empty().append(userInfoInSidebar(theObject));
   });
-  $.get('/api/users/4/favourites', function(data) {
+  $.get('/api/users/2/favourites', function(data) {
     //console.log(data);
     $('.lower-sidebar-body').empty();
     data.forEach(function(entry) {
