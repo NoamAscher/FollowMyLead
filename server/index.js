@@ -117,8 +117,7 @@ app.post('/maps/:id/locations', function(req, res) {
   console.log(req.session.userId);
   knex('locations').insert({'name': req.body.name, 'summary': req.body.summary, 'latitude': req.body.lat, 'longitude': req.body.long, 'category': req.body.category, 'url': req.body.url, 'img': req.body.img, 'user_id': req.session.userId, 'map_id': req.params.id })
   .then(function(result) {
-    res.redirect('/');
-    console.log("Written to database.");
+    res.json({success: true});
   })
   .catch(function(error) {
     console.error(error);
@@ -150,7 +149,9 @@ app.put('/locations/:id', function(req, res) {
   })
 });
 
-app.delete('locations/:id', function(req, res) {
+app.delete('/locations/:id', function(req, res) {
+
+  console.log("received delete");
   knex('locations').where('id', req.params.id).del()
   .then(function(result) {
     res.json({success: true});
