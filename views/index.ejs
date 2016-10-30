@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title>follow my lead</title>
   <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
   <link rel="stylesheet" href="/styles/style.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
@@ -13,7 +13,8 @@
 <body>
 
 
-  <script type="text/javascript" src="/scripts/app.js"></script>
+<script type="text/javascript" src="/app.js"></script>
+
 <div class="container-fluid">
     <nav id="nav-bar">
       <div class="container-fluid">
@@ -64,17 +65,22 @@
     let attribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
     var map = L.map('initialmap').setView([49.2566, -123.11554], 5);
     // here is a pretend set of locations.
-    $.get( "api/locations/2", function(data) {
+    $.get( "api/locations/1", function(data) {
       const locationsArray = [];
       let newLocation;
       function onMapClick(e) {
         if (newLocation !== undefined) {
           map.removeLayer(newLocation);
         }
+
         let coords = [e.latlng.lat, e.latlng.lng];
-        newLocation = L.marker(coords).bindPopup("i am a form" + coords).addTo(map).openPopup();
+
+        newLocation = L.marker(coords).bindPopup(renderForm("1", e.latlng.lat, e.latlng.lng)).addTo(map).openPopup();
+
       }
+
       map.on('click', onMapClick);
+
       for (let i = 0; i < data.length; i++) {
         //let handle = data[i].handle;
         let avatar = data[i].avatar;
@@ -82,7 +88,7 @@
         let name = data[i].name;
         let url = data[i].url;
         let image = data[i].img;
-        let category = data[i].category;
+        let category = data[i].cafestegory;
         let html = renderHTML("handle", image, summary, url, name);
         let coords = [data[i].latitude, data[i].longitude];
         locationsArray.push(L.marker(coords).bindPopup(html));
@@ -92,16 +98,84 @@
     L.tileLayer(tokenURL, { attribution: attribution, maxZoom: 18})
     .addTo(map);
     // the following method takes in an array of points to add to the map view
+
     function renderHTML(handle, avatar, description, url, place) {
+
       var $section = $("<section>").addClass("popup-container").html('<img src=\'' + avatar + '\' class="popup-image"><br>' + '<span class="popup-placetitle"><h6>' + place + '</h6></span>');
       var $header = $("<header>").addClass("popup-header");
       var $content = $("<content>").addClass("popup-body").html(description + '<p>' + '<a class="popup-link" href=' + url + '>' + url + '</a>');
       var $footer = $("<footer>").addClass("popup-footer").html("<button type='button' class='popup-edit'>Edit</button><button type='button' class='popup-delete'>Delete</button>");
+
       $section.append($header);
       $section.append($content);
       $section.append($footer);
+
       return $($section).prop('outerHTML');
+
     };
+
+
+
+    function renderForm(user, lat, long) {
+
+      var $form = $("<form>").attr("method", "POST").attr("action", "/maps/" + user + "/locations/").addClass("popup-form");
+
+
+
+      var $nameLabel = $("<label>").attr("for", "name").text("Name");
+      var $summaryLabel = $("<label>").attr("for", "summary").text("Summary");
+      var $urlLabel = $("<label>").attr("for", "url").text("URL");
+      var $imageLabel = $("<label>").attr("for", "image").text("Image");
+
+      var $name = $("<input>").attr("id", "name_field").attr("name", "name");
+      var $summary = $("<input>").attr("id", "summary_field").attr("name", "summary");
+      var $url = $("<input>").attr("id", "url_field").attr("name", "url");
+      var $image = $("<input>").attr("id", "image_field").attr("name", "image");
+      var $long = $("<input>").attr("id", "long_field").attr("name", "long").attr("type", "hidden").attr("value", long);
+      var $lat = $("<input>").attr("id", "lat_field").attr("name", "lat").attr("type", "hidden").attr("value", lat);
+      var $button = $("<button>");
+
+      var $category = $("<select>")
+
+      var $points = $("<option>").attr("value", "Points of Interest").html("Points of Interest");
+      var $beaches = $("<option>").attr("value", "Beaches").html("Beaches");
+      var $restaurants = $("<option>").attr("value", "Restaurants").html("Restaurants");
+      var $parks = $("<option>").attr("value", "Parks and Nature").html("Parks and Nature");
+      var $cafes = $("<option>").attr("value", "Cafes").html("Cafes");
+
+      $category.append($points);
+      $category.append($beaches);
+      $category.append($restaurants);
+      $category.append($parks);
+      $category.append($cafes);
+
+      $form.append($nameLabel);
+      $form.append($name);
+      $form.append($summaryLabel);
+      $form.append($summary);
+      $form.append($urlLabel);
+      $form.append($url);
+      $form.append($imageLabel);
+      $form.append($image);
+      $form.append($long);
+      $form.append($lat);
+      $form.append($category);
+      $form.append($button);
+
+
+
+      return $($form).prop('outerHTML');
+
+
+
+    };
+
+    $('form').on('submit', function (event) {
+        event.preventDefault();
+    });
+
+
+
     </script>
 </body>
 </html>

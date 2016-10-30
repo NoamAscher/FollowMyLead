@@ -85,7 +85,8 @@ app.get('/api/locations/:id', function(req, res) {
 app.get('/api/maps/:id', function(req, res) {
   knex.select().from('maps').where('id', req.params.id)
   .then(function(maps) {
-    res.json(maps[0]);
+    res.json(maps);
+    console.log(maps);
   })
   .catch(function(error) {
     console.error(error);
@@ -112,9 +113,12 @@ app.post('/maps/new', function(req, res) {
 
 // NOT DONE - NEED MAP API REFERENCE
 app.post('/maps/:id/locations', function(req, res) {
-  knex('locations').insert({'name': req.body.name, 'summary': req.body.summary, 'latitude': ASKMIKE, 'longitude': ASKMIKE, 'category': req.body.category, 'url': req.body.url, 'img': req.body.img, 'user_id': req.session.userId, 'map_id': req.params.id, 'date_created': Date.now()})
+  console.log(req.params.id);
+  console.log(req.session.userId);
+  knex('locations').insert({'name': req.body.name, 'summary': req.body.summary, 'latitude': req.body.lat, 'longitude': req.body.long, 'category': req.body.category, 'url': req.body.url, 'img': req.body.img, 'user_id': req.session.userId, 'map_id': req.params.id })
   .then(function(result) {
-    res.json({success: true});
+    res.redirect('/');
+    console.log("Written to database.");
   })
   .catch(function(error) {
     console.error(error);

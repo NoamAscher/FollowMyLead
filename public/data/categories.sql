@@ -12,13 +12,13 @@ INSERT INTO locations (id, name, summary, latitude, longitude, category, url, im
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
   VALUES (3, 'Benny''s',
-    'A neighbourhood classic. Cozy atmosphere, nice staff, hot & cold drinks, and all your bagel needs met.',
+    'A neighbourhood classic. Cozy atmosphere, nice staff, hot & cold drinks.',
     '49.2848816', '-123.1456593', 'Restaurants', 'www.bennys.com', '/images/locations/Benny''s.jpg',
     1, 1, '2016.08.15');
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
   VALUES (4, 'Vanier Park',
-    'Great venue for Bard on the Beach. Ocean front, great view of the sunset and home to the planetarium.',
+    'Great venue for Bard on the Beach.',
     '49.2767298', '-123.145843', 'Parks and Nature', 'www.vanier-park.yvr', 'images/locations/VanierPark.jpg',
     1, 1, '2016.08.24');
 
@@ -128,7 +128,7 @@ INSERT INTO locations (id, name, summary, latitude, longitude, category, url, im
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
   VALUES (21, 'Nine O''Clock Gun',
-    'An explosive charge in the gun goes off at 9am and 9pm. It''s a Vancouver landmark and has a great view.',
+    'An explosive charge in the gun goes off at 9am and 9pm.',
     '49.298456', '-123.1226497', 'Points of Interest', 'vancouver.ca', '/images/locations/rickshaw.jpg',
     5, 6, '2016.08.11');
 
@@ -161,7 +161,7 @@ INSERT INTO locations (id, name, summary, latitude, longitude, category, url, im
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
   VALUES (26, 'Granville Island Public Market',
     'Peninsula & shopping district known for its public market, brewery & thriving artist community.',
-    '49.2641465', '-123.1009203', 'Points of Interest', 'granvilleisland.com', '/images/locations/gIsland.jpg',
+    '49.2723568', '-123.1372595', 'Points of Interest', 'granvilleisland.com', '/images/locations/gIsland.jpg',
     6, 7, '2016.09.03');
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
@@ -173,7 +173,7 @@ INSERT INTO locations (id, name, summary, latitude, longitude, category, url, im
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
   VALUES (28, 'Slickity Jim''s Chat ''n'' Chew',
     'Funky neighbourhood hot spot offering diverse menu of down-home eats & drawing locals & hipsters.',
-    '49.2812332', '-123.0169317', 'Restaurants', 'slickityjims.com', '/images/locations/slickity.jpg',
+    '49.2539856', '-123.1032439', 'Restaurants', 'slickityjims.com', '/images/locations/slickity.jpg',
     6, 7, '2016.08.25');
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
@@ -193,7 +193,7 @@ INSERT INTO locations (id, name, summary, latitude, longitude, category, url, im
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
   VALUES (31, 'Granville Island Public Market',
     'Peninsula & shopping district known for its public market, brewery & thriving artist community.',
-    '49.2641465', '-123.1009203', 'Points of Interest', 'granvilleisland.com', '/images/locations/gIsland.jpg',
+    '49.2723568', '-123.1372595', 'Points of Interest', 'granvilleisland.com', '/images/locations/gIsland.jpg',
     2, 3, '2016.09.03');
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
@@ -205,7 +205,7 @@ INSERT INTO locations (id, name, summary, latitude, longitude, category, url, im
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
   VALUES (33, 'Slickity Jim''s Chat ''n'' Chew',
     'Funky neighbourhood hot spot offering diverse menu of down-home eats & drawing locals & hipsters.',
-    '49.2812332', '-123.0169317', 'Restaurants', 'slickityjims.com', '/images/locations/slickity.jpg',
+    '49.2539856', '-123.1032439', 'Restaurants', 'slickityjims.com', '/images/locations/slickity.jpg',
     2, 3, '2016.08.25');
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
@@ -251,4 +251,8 @@ INSERT INTO locations (id, name, summary, latitude, longitude, category, url, im
     '49.2821313', '-123.104346', 'Cafes', 'nelsontheseagull.com', 'images/locations/Nelson.jpg',
     7, 1, '2016.08.24');
 
-
+INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
+ VALUES (36, 'Playland Amusement Park',
+   'Rides for all ages including a coaster built in 1958.',
+   '49.282756' ,'-123.1068707', 'Points of Interest', 'pne.ca', '/images/locations/playland.jpg',
+   7, 1, '2016.09.03');

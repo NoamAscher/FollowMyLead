@@ -98,7 +98,6 @@ INSERT INTO locations (id, name, summary, latitude, longitude, category, url, im
 */
 
 
-/*
 INSERT INTO map_locations (id, location_id, map_id, user_id)
   VALUES (1, 1, 1, 1);
 INSERT INTO map_locations (id, location_id, map_id, user_id)
@@ -189,4 +188,3 @@ INSERT INTO follow_pairs (id, follower_id, following_id)
   VALUES (21, 7, 5);
 INSERT INTO follow_pairs (id, follower_id, following_id)
   VALUES (22, 7, 6);
-
