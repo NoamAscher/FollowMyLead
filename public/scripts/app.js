@@ -87,6 +87,7 @@ var favouriteMapInSidebar = function(favouriteMapInfo) {
       <div class="right">
         <div class="handle">${favouriteMapInfo.handle}:</div>
         <div class="map-name">"${favouriteMapInfo.name}"</div>
+        <div class="map-id" style="display: none">"${favouriteMapInfo.map_id}"</div>
       </div>
     </article>
   `;
@@ -120,12 +121,19 @@ var loadSidebar = function() {
       $('.favorites-body').append(favouriteMapInSidebar(entry));
     });
   });
+
   $.get('api/users/2/following', function(data) {
     data.forEach(function(entry) {
-      console.log(entry);
       $('.followed-body').hide().append(followedUsersInSidebar(entry));
     });
   });
+
+  // Click on an avatar to load a new map:
+
+  //   $.get('/api/map/:id/locations', function(data) {
+  //   var theObject = data[0];
+  //   $('.upper-sidebar').empty().append(userInfoInSidebar(theObject));
+  // });
 };
 
 
@@ -147,11 +155,16 @@ var renderMapWatchers = function(mapWatchersInfo) {
 /* Render the Map!! */
 
 var renderMap = function(mapinfo) {
+
+  $.get('/api/map/:id/locations', function(data) {
+    var theObject = data[0];
+    $('.upper-sidebar').empty().append(userInfoInSidebar(theObject));
+  });
   // do something, including the purple stuff.
 }
 
 
-$(function() {
+$(document).ready(function() {
 
   $(document).ajaxError(function(e, req, xhr) {
     var error;
@@ -182,18 +195,63 @@ $(function() {
 
   // Toggle panes
   $('.lower-sidebar').find('.favorites-header').on('click', function(event) {
-      if ($('.favorites-body').is(':hidden')) {
-        $('.followed-body').hide();
-        $('.favorites-body').show();
-      }
+    if ($('.favorites-body').is(':hidden')) {
+      $('.followed-body').hide();
+      $('.favorites-body').show();
+    }
   });
 
   $('.lower-sidebar').find('.followed-header').on('click', function(event) {
-      if ($('.followed-body').is(':hidden')) {
-        $('.favorites-body').hide();
-        $('.followed-body').show();
-      }
+    if ($('.followed-body').is(':hidden')) {
+      $('.favorites-body').hide();
+      $('.followed-body').show();
+    }
   });
+
+  $('.favorites-body').on('click', 'img', function(event) {
+      var mapId = $(this).parent().next().find('.map-id').html();
+      console.log(mapId);
+
+      $.get( "/api/map/mapId/locations", function(data) {
+          const locationsArray = [];
+          let newLocation;
+          function onMapClick(e) {
+            if (newLocation !== undefined) {
+              map.removeLayer(newLocation);
+            }
+
+            let coords = [e.latlng.lat, e.latlng.lng];
+
+            newLocation = L.marker(coords).bindPopup(renderForm("1", e.latlng.lat, e.latlng.lng)).addTo(map).openPopup();
+
+            // $('form').on('submit', function (event) {
+            //   event.preventDefault();
+            // })
+
+          }
+
+          map.on('click', onMapClick);
+
+          console.log(data);
+
+          for (let i = 0; i < data.length; i++) {
+            //let handle = data[i].handle;
+            let avatar = data[i].avatar;
+            let summary = data[i].summary;
+            let name = data[i].name;
+            let url = data[i].url;
+            let image = data[i].img;
+            let category = data[i].category;
+            let html = renderHTML("1", image, summary, url, name);
+            let locationId = data[i].id;
+            let coords = [data[i].latitude, data[i].longitude];
+            locationsArray.push(L.marker(coords).bindPopup(html));
+            L.layerGroup(locationsArray).addTo(map);
+
+          };
+        });
+
+    });
 
 });
 

@@ -119,7 +119,7 @@ body {
   border: 1px solid #bbb;
   /*border-radius: 10px;*/
   margin: auto;
-  margin-top: 20px;
+  /*margin-top: 20px;*/
   /*margin-bottom: 10px;*/
   padding: 0 0 0 0;
   width: 80%;
@@ -174,14 +174,13 @@ body {
   height: 75%;
 
   float: top;
-  padding: 0px;
+  padding: 0 0 0 10px;
   margin-left: 100px;
   font-size: 90%;
 }
 .favorites-body .right .handle {
   height: 70%;
   display: inline;
-  padding: 0;
   margin: 0;
   display: block;
   font-size: 100%
@@ -199,44 +198,48 @@ body {
 
 .followed-body {
   border-top: 1px solid #bbb;
-  padding: 12px 0 0 12px;
 }
 
-.followed-body .followed {
+.followed {
   display: block;
   height: 120px;
-  padding: 0px;
+  padding: 12px;
 }
 
-.followed-body .left {
+.followed .left {
   display: block;
-  width: 30%;
+  width: 25%;
   float: left;
   font-size: 60%;
 }
 
-.followed-body .right {
+.followed .right {
   display: block;
   width: 75%;
   height: 90%;
 
   float: top;
-  padding: 0px;
-  margin: 0 0 0 100px;
+  padding: 0 20px 0 0px;
+  margin: 0 0 0 101px;
   font-size: 90%;
 }
-.followed-body .handle {
+
+.followed .right .handle {
+  position: relative;
+  top: -1.5em;
+  float: left;
   display: block;
-  height: 10px;
-  font-size: 100%
-  border: 1px solid #bbb;
+  height: 30%;
+  font-size: 120%;
 }
 
-.followed-body .right .bio {
+.followed .right .bio {
   display: block;
-  padding: 0 0 0 0;
+  padding: 30px 10px 0 10px;
   text-align: left;
-  }
+}
+
+
 
 #initialmap {
 /*  min-height: 100%;*/

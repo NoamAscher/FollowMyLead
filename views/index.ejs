@@ -107,7 +107,7 @@
     let attribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
     var map = L.map('initialmap').setView([49.2566, -123.11554], 5);
     // here is a pretend set of locations.
-    $.get( "api/locations/1", function(data) {
+    $.get( "/api/users/2/singlemap/locations", function(data) {
       const locationsArray = [];
       let newLocation;
       function onMapClick(e) {

@@ -94,6 +94,22 @@ app.get('/api/maps/:id', function(req, res) {
   })
 });
 
+// Select LIMIT one (autoselected) map for a user
+app.get('/api/users/:id/singlemap/locations', function(req, res) {
+  var theMap = knex.select('id').from('maps').limit(1)
+  .where('user_id', req.params.id);
+
+  knex.select().from('locations').where('map_id', theMap)
+  .then(function (locations) {
+    res.json(locations);
+  })
+  .catch(function(error) {
+    console.error(error);
+    res.json({error: {message: error}})
+  })
+});
+
+
 app.post('/maps/new', function(req, res) {
   knex('maps').insert({'user_id': req.session.userId, 'name': req.body.name, 'date_created': Date.now()})
   .then(function(result) {
@@ -178,10 +194,10 @@ app.get('/api/users/:id/favourites', function(req, res) {
   var map_id_set = knex.select('map_id').from('favourite_maps')
   .where('user_id', req.params.id);
 
-  knex('users').distinct('avatar', 'handle', 'name').select()
+  knex('users').distinct('avatar', 'handle', 'name', 'map_id').select()
   .innerJoin('maps', 'users.id', 'user_id')
   .innerJoin('favourite_maps', 'maps.id', 'map_id')
-  .whereIn('map_id', map_id_set)
+  .whereIn('map_id', map_id_set).orderBy('name', 'desc')
   .then(function(info) {
     res.json(info);
   })
@@ -193,14 +209,6 @@ app.get('/api/users/:id/favourites', function(req, res) {
 
 
 // New route: get list of users logged in user is following
-
-// SELECT distinct users.id, handle, bio, avatar
-//   FROM users JOIN follow_pairs ON users.id=following_id
-//   WHERE following_id IN
-//   (SELECT following_id
-//     FROM follow_pairs
-//     WHERE follower_id = 1);
-
 app.get('/api/users/:id/following', function(req, res) {
   var followings = knex.select('following_id').from('follow_pairs')
   .where('follower_id', req.params.id);
@@ -218,6 +226,29 @@ app.get('/api/users/:id/following', function(req, res) {
 });
 
 
+// New route: load locations for a specific map
+app.get('/api/map/:id/locations', function(req, res) {
+  knex.select().from('locations').where('map_id', req.params.id)
+  .then(function (locations) {
+    res.json(locations);
+  })
+  .catch(function(error) {
+    console.error(error);
+    res.json({error: {message: error}})
+  })
+});
+
+// New route: load map by map name
+app.get('/api/map/:name', function(req, res) {
+  knex.select('id').from('maps').where('maps.name', req.params.name)
+  .then(function (mapId) {
+    res.send(mapId);
+  })
+  .catch(function(error) {
+    console.error(error);
+    res.send({error: {message: error}})
+  })
+});
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
