@@ -27,7 +27,12 @@ app.use(cookieSession({
 }));
 
 app.get('/', function(req, res) {
-  res.render('index');
+  var loggedin = false;
+  if (req.session.userId) {
+    loggedin = true;
+  }
+  console.log('loggedin is ', loggedin)
+  res.render('index', {loggedin: loggedin});
 });
 
 app.get('/users/:id', function(req, res) {
@@ -61,7 +66,7 @@ app.get('/logout', function (req, res) {
 })
 
 app.get('/login', function(req, res) {
-  req.session.userId = 100;
+  req.session.userId = 1;
   console.log('logged in');
   res.redirect('/');
 })
@@ -109,7 +114,7 @@ app.post('/maps/new', function(req, res) {
 
 // NOT DONE - NEED MAP API REFERENCE
 app.post('/maps/:id/locations', function(req, res) {
-  console.log(req.params.id);
+  console.log("MAP ID", req.params.id);
   console.log(req.session.userId);
   knex('locations').insert({'name': req.body.name, 'summary': req.body.summary, 'latitude': req.body.lat, 'longitude': req.body.long, 'category': req.body.category, 'url': req.body.url, 'img': req.body.img, 'user_id': req.session.userId, 'map_id': req.params.id })
   .then(function(result) {
@@ -138,7 +143,7 @@ app.post('/maps/:id/locations/copy', function(req, res) {
 app.put('/locations/:id', function(req, res) {
   knex('locations').insert({'name': req.body.name, 'summary': req.body.summary, 'latitude': ASKMIKE, 'longitude': ASKMIKE, 'category': req.body.category, 'url': req.body.url, 'img': req.body.img, 'user_id': req.session.userId, 'map_id': req.params.id, 'date_created': Date.now()})
   .then(function(result) {
-    res.json({success: true});
+    res.redirect('/');
   })
   .catch(function(error) {
     console.error(error);
@@ -146,10 +151,10 @@ app.put('/locations/:id', function(req, res) {
   })
 });
 
-app.delete('locations/:id', function(req, res) {
+app.delete('/locations/:id', function(req, res) {
   knex('locations').where('id', req.params.id).del()
   .then(function(result) {
-    res.json({success: true});
+    res.redirect('/');
   })
   .catch(function(error) {
     console.error(error);
