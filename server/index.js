@@ -172,19 +172,21 @@ app.get('/api/users', function(req, res) {
   })
 });
 
-SELECT distinct avatar, handle, name
-  FROM users JOIN maps ON users.id=user_id JOIN favourite_maps ON maps.id=map_id
-  WHERE map_id IN
-  (SELECT map_id
-    FROM favourite_maps WHERE user_id = 1);
+// SELECT distinct avatar, handle, name
+//   FROM users JOIN maps ON users.id=user_id JOIN favourite_maps ON maps.id=map_id
+//   WHERE map_id IN
+//   (SELECT map_id
+//     FROM favourite_maps WHERE user_id = 1);
 
 // New route: get user-favorited maps
 app.get('/api/users/:id/favourites', function(req, res) {
-  knex.distinct('avatar', 'handle', 'name').select().from('users')
+  var map_id_set = knex.select('map_id').from('favourite_maps')
+  .where('user_id', req.params.id);
+
+  knex('users').distinct('avatar', 'handle', 'name').select()
   .innerJoin('maps', 'users.id', 'user_id')
   .innerJoin('favourite_maps', 'maps.id', 'map_id')
-  .wherein(map_id, knex.select('map_id').from('favourite_maps')
-    .where('user_id', req.params.id))
+  .whereIn('map_id', map_id_set)
   .then(function(info) {
     res.json(info);
   })

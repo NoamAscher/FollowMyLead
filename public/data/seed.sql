@@ -13,24 +13,24 @@ INSERT INTO users (id, handle, email, password, bio, avatar)
     ':-)', '/images/avatars/Paris-Hilton-and-her-dog.jpg');
 
 INSERT INTO users (id, handle, email, password, bio, avatar)
-  VALUES (4, 'random_celeb', 'random_celeb@celeb.org', 'lhl',
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
-    '/images/avatars/img_3_b_added.jpg');
-
-INSERT INTO users (id, handle, email, password, bio, avatar)
-  VALUES (5, 'Cicero', 'cicero@ancient.rome', 'lhl',
+  VALUES (4, 'Cicero', 'cicero@ancient.rome', 'lhl',
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
     '/images/avatars/218px-Cicero.jpg');
 
 INSERT INTO users (id, handle, email, password, bio, avatar)
-  VALUES (6, 'Louis C.K.', 'louis@notoninternet.com', 'lhl',
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
-    '/images/avatars/218px-Cicero.jpg');
+  VALUES (5, 'random_celeb', 'random_celeb@celeb.org', 'lhl',
+    'Freegan schlitz craft beer, pop-up ugh williamsburg banh mi mustache vaporware',
+    '/images/avatars/random_celeb.jpg');
+
+INSERT INTO users (id, handle, email, password, bio, avatar)
+  VALUES (6, 'Jack', 'heres@johnny.com', 'lhl',
+    'All work and no play makes Jack a dull boy',
+    '/images/avatars/jackolantern.jpg');
 
 INSERT INTO users (id, handle, email, password, bio, avatar)
   VALUES (7, 'SpongeBob', 'spongebob@squarepants.net', 'lhl',
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
-    '/images/avatars/218px-Cicero.jpg');
+    'I''m ugly and I''m proud.',
+    '/images/avatars/spongebob.jpg');
 
 
 INSERT INTO maps (id, user_id, name, date_created)

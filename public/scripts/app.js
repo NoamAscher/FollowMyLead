@@ -77,8 +77,19 @@ var userInfoInSidebar = function(users) {
   `;
 };
 
-var favouriteMapsInSidebar = function(favouriteMapsInfo) {
-
+var favouriteMapInSidebar = function(favouriteMapInfo) {
+  console.log(favouriteMapInfo);
+  return `
+    <article class="map">
+      <div class="left">
+        <img class="avatar" src="${favouriteMapInfo.avatar}">
+      </div>
+      <div class="right">
+        <div class="handle">${favouriteMapInfo.handle}: </div>
+        <div class="map-name">"${favouriteMapInfo.name}"</div>
+      </div>
+    </article>
+  `;
 };
 
 var followedUsersInSidebar = function(followedUsersInfo) {
@@ -87,15 +98,18 @@ var followedUsersInSidebar = function(followedUsersInfo) {
 
 
 var loadSidebar = function() {
-  $.get('api/users/2', function(data) {
+  $.get('api/users/4', function(data) {
     var theObject = data[0];
     $('.upper-sidebar').empty().append(userInfoInSidebar(theObject));
   });
-  // $.get('/api/users/2/favourites', function(data) {
-  //   data.forEach(entry, function() {
-  //     console.log(entry);
-  //   });
-  // };
+  $.get('/api/users/4/favourites', function(data) {
+    //console.log(data);
+    $('.lower-sidebar-body').empty();
+    data.forEach(function(entry) {
+      //console.log(entry);
+      $('.lower-sidebar-body').append(favouriteMapInSidebar(entry));
+    });
+  });
 };
 
 
