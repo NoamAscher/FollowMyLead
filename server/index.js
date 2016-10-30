@@ -172,11 +172,6 @@ app.get('/api/users', function(req, res) {
   })
 });
 
-// SELECT distinct avatar, handle, name
-//   FROM users JOIN maps ON users.id=user_id JOIN favourite_maps ON maps.id=map_id
-//   WHERE map_id IN
-//   (SELECT map_id
-//     FROM favourite_maps WHERE user_id = 1);
 
 // New route: get user-favorited maps
 app.get('/api/users/:id/favourites', function(req, res) {
@@ -187,6 +182,32 @@ app.get('/api/users/:id/favourites', function(req, res) {
   .innerJoin('maps', 'users.id', 'user_id')
   .innerJoin('favourite_maps', 'maps.id', 'map_id')
   .whereIn('map_id', map_id_set)
+  .then(function(info) {
+    res.json(info);
+  })
+  .catch(function(error) {
+    console.error(error);
+    res.json({error: {message: error}})
+  })
+});
+
+
+// New route: get list of users logged in user is following
+
+// SELECT distinct users.id, handle, bio, avatar
+//   FROM users JOIN follow_pairs ON users.id=following_id
+//   WHERE following_id IN
+//   (SELECT following_id
+//     FROM follow_pairs
+//     WHERE follower_id = 1);
+
+app.get('/api/users/:id/following', function(req, res) {
+  var followings = knex.select('following_id').from('follow_pairs')
+  .where('follower_id', req.params.id);
+
+  knex('users').distinct('avatar', 'handle', 'bio').select()
+  .innerJoin('follow_pairs', 'users.id', 'following_id')
+  .whereIn('following_id', followings)
   .then(function(info) {
     res.json(info);
   })
