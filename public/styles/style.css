@@ -114,6 +114,48 @@ body {
 }
 
 
+.lower-sidebar {
+  background: #ddd;
+  border: 1px solid #bbb;
+  /*border-radius: 10px;*/
+  margin: auto;
+  margin-top: 20px;
+  /*margin-bottom: 10px;*/
+  padding: 0 0 0 0;
+  width: 80%;
+  /*overflow-wrap: break-word;*/
+}
+
+.lower-sidebar-header {
+  height: 40px;
+}
+
+.favorites-header {
+  float: left;
+  font-size: 85%;
+  text-align: center;
+  padding-top: 10px;
+  width: 50%;
+  height: 100%;
+}
+
+.followed-header {
+  float: right;
+  text-align: center;
+  font-size: 85%;
+  padding-top: 10px;
+  border-left: 1px solid #bbb;
+  width: 50%;
+  height: 100%;
+}
+
+.lower-sidebar-body {
+  border-top: 1px solid #bbb;
+  height: 150px;
+}
+
+
+
 #initialmap {
 /*  min-height: 100%;*/
   height: 80%;
