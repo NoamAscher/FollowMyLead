@@ -37,9 +37,9 @@ INSERT INTO locations (id, name, summary, latitude, longitude, category, url, im
     2, 2, '2016.08.28');
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
-  VALUES (7, 'Buntzen Bay',
-    'so many greenz111!!1!',
-    '49.3853791', '-122.8975262', 'Beaches', 'www.buntzen.bay', '/images/locations/BuntzenBay.jpg',
+  VALUES (7, 'Kits Beach',
+    'You can do anything here! Volleyball, bocce, badminton, picnic etc...',
+    '49.2757266', '-123.1563801', 'Beaches', 'www.kitsbeach.net', '/images/locations/kitsBeach.jpg',
     2, 2, '2016.09.03');
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
@@ -225,30 +225,30 @@ INSERT INTO locations (id, name, summary, latitude, longitude, category, url, im
   VALUES (36, 'Playland Amusement Park',
     'Rides for all ages including a coaster built in 1958 plus fair food & Fright Nights in the fall.',
     '49.282756' ,'-123.1068707', 'Points of Interest', 'pne.ca', '/images/locations/playland.jpg',
-    7, 1, '2016.09.03');
+    7, 6, '2016.09.03');
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
   VALUES (37, 'Westridge Marine Terminal',
     'Nice, quiet beach in North Burnaby',
     '49.289093', '-122.9720253', 'Beaches', 'westridge.burna.bee', 'images/locations/westridge.jpg',
-    7, 1, '2016.09.03');
+    7, 6, '2016.09.03');
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
   VALUES (38, 'Butchers Block BBQ',
     'Good food, great service, good beer, what''s not to like?',
     '49.2812332', '-123.0169317', 'Restaurants', 'www.burgers-etc.com', '/images/locations/butchersBlock.jpg',
-    7, 1, '2016.08.05');
+    7, 6, '2016.08.05');
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
   VALUES (39, 'New Brighton Park',
     'A GREAT park for people and especially dogs for any purpose, really.',
     '49.2912098', '-123.0388927', 'Parks and Nature', 'covapp.vancouver.ca', '/images/locations/newBrightonPark.jpg',
-    7, 1, '2016.08.20');
+    7, 6, '2016.08.20');
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
   VALUES (40, 'Nelson the Seagull',
     'Airy, quaint coffeehouse & bake shop for breakfast, breads, pastries, sandwiches & picnic boards.',
     '49.2821313', '-123.104346', 'Cafes', 'nelsontheseagull.com', 'images/locations/Nelson.jpg',
-    7, 1, '2016.08.24');
+    7, 6, '2016.08.24');
 
 
