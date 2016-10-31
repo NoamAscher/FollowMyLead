@@ -236,7 +236,6 @@ body {
   display: block;
   margin: 0;
   padding-bottom: 10px;
-  display: block;
   font-size: 20px;
   margin-bottom: 5px;
   height: 50px;
@@ -246,7 +245,6 @@ body {
 .favorites-body .right .name {
   display: inline-block;
   padding: 10px 0 0 0;
-  font-style
   text-align: left;
   display: block;
   font-size: 11%;
@@ -729,3 +727,10 @@ body {
   border: 1px solid black;
   display: inline-block;
 }*/
+
+.popup-add {
+ position: fixed;
+ display: inline-block;
+ bottom: 15px;
+ left: 180px;
+}

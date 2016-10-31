@@ -120,6 +120,7 @@ var renderHTML = function (id, avatar, description, url, place) {
       var $content = $("<content>").addClass("popup-body").html(description + '<p>' + '<a class="popup-link" href=' + url + '>' + url + '</a>');
       var $footer = $("<footer>").addClass("popup-footer").html("<form method='post' action='/locations/'' + id + '?_method=DELETE' ><button class='popup-edit' type='submit' value='Submit'>Delete</button></form>");
 
+
       $section.append($header);
       $section.append($content);
       $section.append($footer);
