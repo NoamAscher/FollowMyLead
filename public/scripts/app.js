@@ -39,6 +39,7 @@ var followedUsersInSidebar = function(followedUsersInfo) {
       <div class="right">
         <div class="handle">${followedUsersInfo.handle}</div>
         <div class="bio">"${followedUsersInfo.bio}"</div>
+        <div class="user-id" style="display: none">"${followedUsersInfo.id}"</div>
       </div>
     </article>
   `;
@@ -194,28 +195,10 @@ $(document).ready(function() {
 
   loadUser();
 
-
-
   loadFavourites();
 
   loadMaps();
 
-
-
-
-
-  //$.get('/api/users/:id').then(userInfoInSidebar());
-
-
-  // // Compose button functionality
-  // $('#nav-bar').find('.compose').on('click', function(event) {
-  //   if ($('.new-tweet').is(':hidden') ) {
-  //     $('.new-tweet').slideDown();
-  //     $('.new-tweet').find('textarea').focus();
-  //   } else {
-  //     $('.new-tweet').slideUp();
-  //   }
-  // });
 
   // Toggle panes
   $('.lower-sidebar').find('.favorites-header').on('click', function(event) {
@@ -246,6 +229,8 @@ $(document).ready(function() {
 
   $('.favorites-body').on('click', 'img', function(event) {
     $('#initialmap').css("border"," 11px solid #00ee00 ");
+    $(this).parent().parent().parent().find('img').css("border", "0px");
+    $(this).css("border"," 4px solid #00ee00 ");
     $('#initialmap').empty();
     let tokenURL = 'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicG90YXRvd2F2ZSIsImEiOiJjaXVzbzlsbHIwMGZhMnVwdmVoMGphOHNvIn0.HyG4kMGYnE6zVYU6IBr66Q';
     let attribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
@@ -254,12 +239,71 @@ $(document).ready(function() {
 
     var mapId = $(this).parent().next().find('.map-id').html();
     mapId = mapId.substring(1,2);
-    routeString = `/api/map/${mapId}/locations`;
-    console.log(routeString);
-    //map.removeLayer(locationsOnMap);
+    var routeString = `/api/map/${mapId}/locations`;
+
     $.get( routeString, function(data) {
       //console.log(data);
 
+
+      var locationsArray = [];
+      let newLocation;
+
+      function onMapClick(e) {
+        if (newLocation !== undefined) {
+          map.removeLayer(newLocation);
+        }
+
+        let coords = [e.latlng.lat, e.latlng.lng];
+        newLocation = L.marker(coords).bindPopup(renderForm("1", e.latlng.lat, e.latlng.lng)).addTo(map).openPopup();
+
+        // $('form').on('submit', function (event) {
+        //   event.preventDefault();
+        // })
+      }
+
+
+      map.on('click', onMapClick);
+
+      console.log(data);
+
+      for (let i = 0; i < data.length; i++) {
+        //let handle = data[i].handle;
+        let avatar = data[i].avatar;
+        let summary = data[i].summary;
+        let name = data[i].name;
+        let url = data[i].url;
+        let image = data[i].img;
+        let category = data[i].category;
+        let html = renderHTML("1", image, summary, url, name);
+        let locationId = data[i].id;
+        let coords = [data[i].latitude, data[i].longitude];
+        locationsArray.push(L.marker(coords).bindPopup(html));
+        L.layerGroup(locationsArray).addTo(map);
+
+      };
+    });
+
+    L.tileLayer(tokenURL, { attribution: attribution, maxZoom: 18})
+    .addTo(map);
+    // the following method takes in an array of points to add to the map view
+
+  });
+
+  $('.followed-body').on('click', 'img', function(event) {
+    $('#initialmap').css("border"," 11px solid #00ee00 ");
+    $(this).parent().parent().parent().find('img').css("border", "0px");
+    $(this).css("border"," 4px solid #00ee00 ");
+    $('#initialmap').empty();
+    let tokenURL = 'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicG90YXRvd2F2ZSIsImEiOiJjaXVzbzlsbHIwMGZhMnVwdmVoMGphOHNvIn0.HyG4kMGYnE6zVYU6IBr66Q';
+    let attribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
+    map.remove();
+    map = L.map('initialmap').setView([49.2566, -123.11554], 11);
+
+    var userId = $(this).parent().next().find('.user-id').html();
+    userId = userId.substring(1,2);
+    var routeString = `/api/users/${userId}/singlemap/locations`;
+
+    $.get( routeString, function(data) {
 
       var locationsArray = [];
       let newLocation;

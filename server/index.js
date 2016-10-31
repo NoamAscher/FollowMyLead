@@ -226,7 +226,7 @@ app.get('/api/users/:id/following', function(req, res) {
   var followings = knex.select('following_id').from('follow_pairs')
   .where('follower_id', req.params.id);
 
-  knex('users').distinct('avatar', 'handle', 'bio').select()
+  knex('users').distinct('avatar', 'handle', 'bio', 'id').select()
   .innerJoin('follow_pairs', 'users.id', 'following_id')
   .whereIn('following_id', followings)
   .then(function(info) {

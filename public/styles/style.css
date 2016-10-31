@@ -147,25 +147,28 @@ body {
   /*border-radius: 10px;*/
   margin: auto;
 <<<<<<< HEAD
-  margin-top: 15px;
+  /*margin-top: 15px;*/
 =======
-  /*margin-top: 20px;*/
+  margin-top: 20px;
 >>>>>>> jquery_branch_3
   /*margin-bottom: 10px;*/
   padding: 0 0 0 0;
   width: 80%;
-  /*overflow-wrap: break-word;*/
+/*  overflow-wrap: break-word;*/
 }
 
 #map-display {
+  position: relative;
+  top: 0.5em;
+  bottom: 1.5em;
   font-size: 85%;
   padding-top: 10px;
   background: #ddd;
-  border: 1px solid #bbb;
+  border: 2px solid #bbb;
   margin-top: 20px;
   padding: 5px;
-  margin-left: 45px;
-  border-radius: 5px;
+  margin-left: 49px;
+  border-radius: 6px;
 }
 
 .lower-sidebar-header {
@@ -221,22 +224,26 @@ body {
   font-size: 90%;
 }
 .favorites-body .right .handle {
-  height: 70%;
-  display: inline;
+  position: relative;
+  top: -0.5em;
+  height: 80%;
+  display: block;
   margin: 0;
+  padding-bottom: 10px;
   display: block;
   font-size: 20px;
   margin-bottom: 5px;
-  height: 40px;
+  height: 50px;
 
 }
 
 .favorites-body .right .name {
-  display: inline;
-  padding: 0;
+  display: inline-block;
+  padding: 10px 0 0 0;
+  font-style
   text-align: left;
   display: block;
-  font-size: 111%;
+  font-size: 11%;
   }
 
 
@@ -270,21 +277,23 @@ body {
 
 .followed .right .handle {
   position: relative;
-  top: -1.5em;
+  top: -0.8em;
   float: left;
   display: block;
 <<<<<<< HEAD
-  height: 50px;
-  margin-bottom: 5px;
-=======
+
   height: 30%;
   font-size: 120%;
 >>>>>>> jquery_branch_3
 }
 
 .followed .right .bio {
-  display: block;
-  padding: 30px 10px 0 10px;
+  position: relative;
+  top: -3.0em;
+  display: inline;
+  float: left;
+  padding: 0px 10px 0 10px;
+  font-size: 75%;
   text-align: left;
 }
 
