@@ -247,9 +247,9 @@ $(document).ready(function() {
 
 
   $('.favorites-body').on('click', 'img', function(event) {
-    $('#initialmap').css("border"," 11px solid #00ee00 ");
+    $('#initialmap').css("border"," 11px solid #FD6E06 ");
     $(this).parent().parent().parent().find('img').css("border", "0px");
-    $(this).css("border"," 4px solid #00ee00 ");
+    $(this).css("border"," 4px solid #FD6E06 ");
     $('#initialmap').empty();
     let tokenURL = 'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicG90YXRvd2F2ZSIsImEiOiJjaXVzbzlsbHIwMGZhMnVwdmVoMGphOHNvIn0.HyG4kMGYnE6zVYU6IBr66Q';
     let attribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
@@ -310,9 +310,9 @@ $(document).ready(function() {
   });
 
   $('.followed-body').on('click', 'img', function(event) {
-    $('#initialmap').css("border"," 11px solid #00ee00 ");
+    $('#initialmap').css("border"," 11px solid #FD6E06 ");
     $(this).parent().parent().parent().find('img').css("border", "0px");
-    $(this).css("border"," 4px solid #00ee00 ");
+    $(this).css("border"," 4px solid #FD6E06 ");
     $('#initialmap').empty();
     let tokenURL = 'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicG90YXRvd2F2ZSIsImEiOiJjaXVzbzlsbHIwMGZhMnVwdmVoMGphOHNvIn0.HyG4kMGYnE6zVYU6IBr66Q';
     let attribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';

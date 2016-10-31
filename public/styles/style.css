@@ -6,7 +6,7 @@ body {
 
 @media (min-width: 640px) {
   .content-primary {
-    background: #ccc;
+    background: #8e8e8e;
     bottom: 0;
     left: 0;
     position: fixed;
@@ -163,7 +163,7 @@ body {
 /*  overflow-wrap: break-word;*/
 }
 
-#map-display {
+/*#map-display {
   position: relative;
   top: 0.5em;
   bottom: 1.5em;
@@ -172,10 +172,11 @@ body {
   background: #ddd;
   border: 2px solid #bbb;
   margin-top: 20px;
-  padding: 5px;
-  margin-left: 49px;
-  border-radius: 6px;
-}
+  padding: 4px;
+  margin-left: 65px;
+  margin-bottom: 10px;
+  /*border-radius: 6px;
+}*/
 
 .lower-sidebar-header {
   height: 40px;
@@ -532,11 +533,12 @@ body {
   font-size: 85%;
   padding-top: 10px;
   background: #ddd;
-  border: 1px solid #bbb;
+  /*border: 1px solid #bbb;*/
   margin-top: 20px;
+  margin-bottom: 10px;
   padding: 5px;
-  margin-left: 45px;
-  border-radius: 5px;
+  margin-left: 46px;
+  border-radius: 0;
 }
 
 .lower-sidebar-header {
