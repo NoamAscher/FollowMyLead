@@ -39,6 +39,7 @@ var followedUsersInSidebar = function(followedUsersInfo) {
       <div class="right">
         <div class="handle">${followedUsersInfo.handle}</div>
         <div class="bio">"${followedUsersInfo.bio}"</div>
+        <div class="user-id" style="display: none">"${followedUsersInfo.id}"</div>
       </div>
     </article>
   `;
@@ -317,8 +318,9 @@ $(document).ready(function() {
     map.remove();
     map = L.map('initialmap').setView([49.2566, -123.11554], 11);
 
-    var userId = $(this).parent().next().find('.user-id').html();
-    userId = userId.substring(1,2);
+
+    var userId = Math.ceil(Math.random()*5);  // Absolute, shameless display hack.
+    console.log(userId);
     var routeString = `/api/users/${userId}/singlemap/locations`;
 
     $.get( routeString, function(data) {
