@@ -536,6 +536,7 @@ body {
 }
 
 #map-display {
+  visibility: hidden;
   position: relative;
   top: 0.5em;
   bottom: 1.5em;
@@ -1005,7 +1006,7 @@ body {
   margin: 1px;
   border: 1px solid black;
   display: inline-block;
-}*/
+}
 
 .popup-add {
  position: fixed;

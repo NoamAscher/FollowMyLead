@@ -29,13 +29,13 @@
           <% } %>
         </div>
 
-            <% if(loggedin) { %>
-            <button action="/maps/new" id="new-map" class="btn btn-secondary">CREATE A NEW MAP</button>
+            <!-- <% if(loggedin) { %>
+            <button action="/maps/new" id="new-map" class="btn btn-secondary">CREATE A NEW MAP</button> -->
 
-            <form action="/maps/new" method="POST" id="new-map-name" >
+        <!--     <form action="/maps/new" method="POST" id="new-map-name" >
         <input name="name" placeholder="MAP NAME" style="width: 250px"><button class="btn btn-secondary sm" id="submit-new-small">SUBMIT</button></form>
 
-             <% } %>
+             <% } %> -->
       </div>
     </nav>
 
@@ -67,11 +67,11 @@
     </div>
      <% } %>
 
-     <% if (loggedin) { %>
-     <div class="maps">
+     <!-- <% if (loggedin) { %>
+     <div class="maps" style="font-style: italic;  ">
       <span id="map-display">MAPS:</span>
     </div>
-     <% } %>
+     <% } %> -->
 
 
     <% if (loggedin) { %>
@@ -103,12 +103,12 @@
 
        <% if (loggedin) { %>
       <img class="footer-image" src="avatars/chi.jpg">
+      <img class="footer-image" src="avatars/dog-5.png">
+      <img class="footer-image" src="avatars/dog-1.png">
+      <img class="footer-image" src="avatars/dog-3.png">
+      <img class="footer-image" src="avatars/dog-4.png">
+      <img class="footer-image" src="avatars/dog-6.png">
       <img class="footer-image" src="avatars/babyfoof.jpg">
-      <img class="footer-image" src="avatars/chi.jpg">
-      <img class="footer-image" src="avatars/chi.jpg">
-      <img class="footer-image" src="avatars/chi.jpg">
-      <img class="footer-image" src="avatars/chi.jpg">
-      <img class="footer-image" src="avatars/chi.jpg">
 
       <% } %>
 

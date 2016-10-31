@@ -1,34 +1,34 @@
 INSERT INTO users (id, handle, email, password, bio, avatar)
-  VALUES (1, 'ForrestGump', 'forrest@gump.com', 'lhl',
+  VALUES (1, '@ForrestGump', 'forrest@gump.com', 'lhl',
     'I have been everywhere', '/images/avatars/bench.jpg');
 
 INSERT INTO users (id, handle, email, password, bio, avatar)
-  VALUES (2, 'BillMurray', 'bill@fillmurray.com', 'lhl',
+  VALUES (2, '@BillMurray', 'bill@fillmurray.com', 'lhl',
     'Bill Murray was born on September 21, 1950 in Evanston, Illinois,
     and was raised in Wilmette, Illinois, a northern suburb of Chicago.',
     '/images/avatars/bill_murray.jpg');
 
 INSERT INTO users (id, handle, email, password, bio, avatar)
-  VALUES (3, 'Paris', 'hilton@email.com', 'lhl',
-    ':-)', '/images/avatars/Paris-Hilton-and-her-dog.jpg');
+  VALUES (3, '@PHilton', 'hilton@email.com', 'lhl',
+    'The way I see it, you should live everyday like its your birthday.', '/images/avatars/Paris-Hilton-and-her-dog.jpg');
 
 INSERT INTO users (id, handle, email, password, bio, avatar)
-  VALUES (4, 'Cicero', 'cicero@ancient.rome', 'lhl',
+  VALUES (4, '@Cicero140BC', 'cicero@ancient.rome', 'lhl',
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
     '/images/avatars/218px-Cicero.jpg');
 
 INSERT INTO users (id, handle, email, password, bio, avatar)
-  VALUES (5, 'random_celeb', 'random_celeb@celeb.org', 'lhl',
+  VALUES (5, '@randomCeleb', 'random_celeb@celeb.org', 'lhl',
     'Freegan schlitz craft beer, pop-up ugh williamsburg banh mi mustache vaporware',
     '/images/avatars/random_celeb.jpg');
 
 INSERT INTO users (id, handle, email, password, bio, avatar)
-  VALUES (6, 'Jack', 'heres@johnny.com', 'lhl',
+  VALUES (6, '@Jack', 'heres@johnny.com', 'lhl',
     'All work and no play makes Jack a dull boy',
     '/images/avatars/jackolantern.jpg');
 
 INSERT INTO users (id, handle, email, password, bio, avatar)
-  VALUES (7, 'SpongeBob', 'spongebob@squarepants.net', 'lhl',
+  VALUES (7, '@SpongeBob', 'spongebob@squarepants.net', 'lhl',
     'I''m ugly and I''m proud.',
     '/images/avatars/spongebob.jpg');
 
