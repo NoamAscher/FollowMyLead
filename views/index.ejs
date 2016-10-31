@@ -45,7 +45,7 @@
 
     <article class="user">
     <header class="user-header"><img class="avatar" src="avatars/billymurray.jpg"><span class="handle">@billmurray2016</span></header>
-    <span class="bio">Murray was born on September 21, 1950 in Evanston, Illinois, and was raised in Wilmette, Illinois, a northern suburb of Chicago. </span>
+    <span class="bio">I'm Bill Murray and I'm going places. </span>
     </article>
 
     <% } %>
@@ -92,6 +92,7 @@
     <div class="footer-favorites">
 
     <% if (!loggedin) { %>
+    <div class="footer-container">
       <img class="footer-image" src="avatars/billymurray.jpg">
       <img class="footer-image" src="avatars/ben.jpg">
       <img class="footer-image" src="avatars/christopher.jpg">
@@ -99,9 +100,11 @@
       <img class="footer-image" src="avatars/Dan_Aykroyd.jpg">
       <img class="footer-image" src="avatars/liam.jpg">
       <img class="footer-image" src="avatars/billymurray.jpg">
+    </div>
       <% } %>
 
        <% if (loggedin) { %>
+    <div class="footer-container">
       <img class="footer-image" src="avatars/chi.jpg">
       <img class="footer-image" src="avatars/dog-5.png">
       <img class="footer-image" src="avatars/dog-1.png">
@@ -109,6 +112,7 @@
       <img class="footer-image" src="avatars/dog-4.png">
       <img class="footer-image" src="avatars/dog-6.png">
       <img class="footer-image" src="avatars/babyfoof.jpg">
+    </div>
 
       <% } %>
 

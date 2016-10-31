@@ -135,11 +135,11 @@ var renderMapWatchers = function(mapWatchersInfo) {
 
   function renderForm(user, lat, long) {
 
-    var $form = $("<form>").attr("method", "POST").attr("action", "/maps/" + user + "/locations/").addClass("popup-new-form");
+    var $form = $("<form>").attr("method", "POST").attr("action", "/maps/" + user + "/locations/").addClass("popup-new-form form-group form-group-sm");
 
     var $nameLabel = $("<label>").attr("for", "name").text("Name");
     var $summaryLabel = $("<label>").attr("for", "summary").text("Summary");
-    var $urlLabel = $("<label>").attr("for", "url").text("URL");
+    var $urlLabel = $("<label>").attr("for", "url").text("Website");
     var $imageLabel = $("<label>").attr("for", "image").text("Image");
 
     var $name = $("<input>").attr("id", "name_field").attr("name", "name");
@@ -411,7 +411,7 @@ $(document).ready(function() {
     let tokenURL = 'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicG90YXRvd2F2ZSIsImEiOiJjaXVzbzlsbHIwMGZhMnVwdmVoMGphOHNvIn0.HyG4kMGYnE6zVYU6IBr66Q';
     let attribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
     map.remove();
-    map = L.map('initialmap').setView([49.2566, -123.11554], 11);
+    map = L.map('initialmap').setView([49.2566, -123.11554], 12);
 
     var mapId = $(this).parent().next().find('.map-id').html();
     mapId = mapId.substring(1,2);
@@ -507,7 +507,7 @@ $(document).ready(function() {
     let tokenURL = 'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicG90YXRvd2F2ZSIsImEiOiJjaXVzbzlsbHIwMGZhMnVwdmVoMGphOHNvIn0.HyG4kMGYnE6zVYU6IBr66Q';
     let attribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
     map.remove();
-    map = L.map('initialmap').setView([49.2566, -123.11554], 11);
+    map = L.map('initialmap').setView([49.2566, -123.11554], 12);
 
 
     var userId = Math.ceil(Math.random()*5);  // Absolute, shameless display hack.
@@ -568,7 +568,7 @@ $(document).ready(function() {
     let tokenURL = 'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicG90YXRvd2F2ZSIsImEiOiJjaXVzbzlsbHIwMGZhMnVwdmVoMGphOHNvIn0.HyG4kMGYnE6zVYU6IBr66Q';
     let attribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
     map.remove();
-    map = L.map('initialmap').setView([49.2566, -123.11554], 11);
+    map = L.map('initialmap').setView([49.2566, -123.11554], 12);
 
 
     var userId = Math.ceil(Math.random()*5);  // Absolute, shameless display hack.
@@ -625,7 +625,7 @@ $(document).ready(function() {
 
     let tokenURL = 'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicG90YXRvd2F2ZSIsImEiOiJjaXVzbzlsbHIwMGZhMnVwdmVoMGphOHNvIn0.HyG4kMGYnE6zVYU6IBr66Q';
     let attribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
-    var map = L.map('initialmap').setView([49.2566, -123.11554], 11);
+    var map = L.map('initialmap').setView([49.2566, -123.11554], 12);
     // here is a pretend set of locations.
     $.get( "/api/users/2/singlemap/locations", function(data) {
       const locationsArray = [];
