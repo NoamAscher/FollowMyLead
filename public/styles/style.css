@@ -59,10 +59,16 @@ body {
     display: inline;
     float: right;
     margin-top: 8px;
+    margin-right: 0;
   }
 
   #new-map {
-    margin-top: 25px;
+    margin: 25px 55px 0 0;
+    border: 2px solid #000066 ;
+    padding: 8px 18px 8px 18px;
+    background-color: #eeeeee ;
+    font-size: 95%;
+    font-style: italic;
   }
 
   #new-map-name {
@@ -100,6 +106,278 @@ body {
     color: #00a087;
   }
 }*/
+
+.avatar {
+  width: 90px;
+  height: 90px;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.bio {
+  font-size: .9em;
+}
+
+.handle {
+
+  line-height: 80px;
+  font-size: 25px;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.user-header {
+  vertical-align: middle;
+  padding-bottom: 10px;
+  border-bottom: 1px solid black;
+
+}
+
+.user {
+  background: #ddd;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 80%;
+  overflow-wrap: break-word;
+}
+
+
+.lower-sidebar {
+  background: #ddd;
+  border: 1px solid #bbb;
+  /*border-radius: 10px;*/
+  margin: auto;
+<<<<<<< HEAD
+  margin-top: 15px;
+=======
+  /*margin-top: 20px;*/
+>>>>>>> jquery_branch_3
+  /*margin-bottom: 10px;*/
+  padding: 0 0 0 0;
+  width: 80%;
+  /*overflow-wrap: break-word;*/
+}
+
+#map-display {
+  position: relative;
+  top: 0.5em;
+  bottom: 1.5em;
+  font-size: 85%;
+  padding-top: 10px;
+  background: #ddd;
+  border: 1px solid #bbb;
+  margin-top: 20px;
+  padding: 5px;
+  margin-left: 45px;
+  border-radius: 5px;
+}
+
+.lower-sidebar-header {
+  height: 40px;
+}
+
+.favorites-header {
+  float: left;
+  font-size: 85%;
+  text-align: center;
+  padding-top: 10px;
+  width: 50%;
+  height: 100%;
+}
+
+.followed-header {
+  float: right;
+  text-align: center;
+  font-size: 85%;
+  padding-top: 10px;
+  border-left: 1px solid #bbb;
+  width: 50%;
+  height: 100%;
+}
+
+
+.favorites-body {
+  border-top: 1px solid #bbb;
+  padding: 12px 0 0 12px;
+}
+
+.favorites-body .map {
+  display: block;
+  height: 120px;
+  padding: 0px;
+}
+
+.favorites-body .left {
+  display: block;
+  width: 30%;
+  float: left;
+  font-size: 60%;
+}
+
+.favorites-body .right {
+  display: block;
+  width: 70%;
+  height: 75%;
+
+  float: top;
+  padding: 0 0 0 10px;
+  margin-left: 100px;
+  font-size: 90%;
+}
+.favorites-body .right .handle {
+  position: relative;
+  top: -0.5em;
+  height: 80%;
+  display: block;
+  margin: 0;
+  padding-bottom: 10px;
+  font-size: 20px;
+  margin-bottom: 5px;
+  height: 50px;
+
+}
+
+.favorites-body .right .name {
+  display: inline-block;
+  padding: 10px 0 0 0;
+  text-align: left;
+  display: block;
+  font-size: 11%;
+  }
+
+
+.followed-body {
+  border-top: 1px solid #bbb;
+}
+
+.followed {
+  display: block;
+  height: 120px;
+  padding: 12px;
+}
+
+.followed .left {
+  display: block;
+  width: 25%;
+  float: left;
+  font-size: 60%;
+}
+
+.followed .right {
+  display: block;
+  width: 75%;
+  height: 90%;
+
+  float: top;
+  padding: 0 20px 0 0px;
+  margin: 0 0 0 101px;
+  font-size: 90%;
+}
+
+.followed .right .handle {
+  position: relative;
+  top: -0.8em;
+  float: left;
+  display: block;
+  height: 30%;
+  font-size: 120%;
+}
+
+.followed .right .bio {
+  position: relative;
+  top: -3.0em;
+  display: inline;
+  float: left;
+  padding: 0px 10px 0 10px;
+  font-size: 75%
+  text-align: left;
+}
+
+
+
+#initialmap {
+/*  min-height: 100%;*/
+  height: 80%;
+/*  width: 61.8%;
+  border: 0;
+  padding: 0;
+  float: right;
+  margin-top: 74px;*/
+}
+
+.leaflet-popup-content {
+/*  border: 1px solid red;*/
+  height: 300px;
+  width: 200px;
+  overflow: scroll;
+}
+
+.popup-image {
+  width: 200px;
+/*  border: 1px solid red;*/
+}
+
+.popup-edit {
+  position: fixed;
+  display: inline-block;
+  bottom: 15px;
+  left: 20px;
+}
+
+.popup-delete {
+  position: fixed;
+  display: inline-block;
+  bottom: 15px;
+  left: 60px;
+}
+
+.popup-add {
+  position: fixed;
+  display: inline-block;
+  bottom: 15px;
+  left: 180px;
+}
+
+.popup-placetitle {
+  font-size: 1.5em;
+  padding: 0px;
+}
+
+.popup-link {
+  position: fixed;
+  display: inline-block;
+  bottom: 40px;
+  left: 22px;
+}
+
+.popup-description {
+
+}
+
+.footer-favorites {
+  background: #ddd;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+}
+
+.footer-image {
+  width: 107px;
+  height: 100px;
+  margin: 1px;
+  border: 1px solid black;
+  display: inline-block;
+}
+
+
+
+
+
 
 .avatar {
   width: 90px;
@@ -284,7 +562,7 @@ body {
 
 .followed .right .bio {
   display: block;
-  padding: 30px 10px 0 10px;
+  padding: 35px 10px 0 10px;
   text-align: left;
 }
 
@@ -355,4 +633,11 @@ body {
   margin: 1px;
   border: 1px solid black;
   display: inline-block;
+}*/
+
+.popup-add {
+ position: fixed;
+ display: inline-block;
+ bottom: 15px;
+ left: 180px;
 }
