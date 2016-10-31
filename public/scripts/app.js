@@ -113,6 +113,7 @@ var renderMapWatchers = function(mapWatchersInfo) {
 //   // do something, including the purple stuff.
 // }
 
+
   function renderHTML(locationId, img, description, url, place, userId) {
 
     var $section = $("<section>").addClass("popup-html-container").html('<img src=\'' + img + '\' class="popup-image"><br>' + '<span class="popup-placetitle"><h6>' + place + '</h6></span>');
@@ -129,6 +130,8 @@ var renderMapWatchers = function(mapWatchersInfo) {
     return $($section).prop('outerHTML');
 
   };
+
+
 
   function renderForm(user, lat, long) {
 
@@ -401,7 +404,9 @@ $(document).ready(function() {
 //});  // to continue document.ready()
 
   $('.favorites-body').on('click', 'img', function(event) {
-    $('#initialmap').css("border"," 11px solid #00ee00 ");
+    $('#initialmap').css("border"," 11px solid #FD6E06 ");
+    $(this).parent().parent().parent().find('img').css("border", "0px");
+    $(this).css("border"," 4px solid #FD6E06 ");
     $('#initialmap').empty();
     let tokenURL = 'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicG90YXRvd2F2ZSIsImEiOiJjaXVzbzlsbHIwMGZhMnVwdmVoMGphOHNvIn0.HyG4kMGYnE6zVYU6IBr66Q';
     let attribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
@@ -555,6 +560,66 @@ $(document).ready(function() {
 
   });
 
+  $('.followed-body').on('click', 'img', function(event) {
+    $('#initialmap').css("border"," 11px solid #FD6E06 ");
+    $(this).parent().parent().parent().find('img').css("border", "0px");
+    $(this).css("border"," 4px solid #FD6E06 ");
+    $('#initialmap').empty();
+    let tokenURL = 'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoicG90YXRvd2F2ZSIsImEiOiJjaXVzbzlsbHIwMGZhMnVwdmVoMGphOHNvIn0.HyG4kMGYnE6zVYU6IBr66Q';
+    let attribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
+    map.remove();
+    map = L.map('initialmap').setView([49.2566, -123.11554], 11);
+
+
+    var userId = Math.ceil(Math.random()*5);  // Absolute, shameless display hack.
+    console.log(userId);
+    var routeString = `/api/users/${userId}/singlemap/locations`;
+
+    $.get( routeString, function(data) {
+
+      var locationsArray = [];
+      let newLocation;
+
+      function onMapClick(e) {
+        if (newLocation !== undefined) {
+          map.removeLayer(newLocation);
+        }
+
+        let coords = [e.latlng.lat, e.latlng.lng];
+        newLocation = L.marker(coords).bindPopup(renderForm("1", e.latlng.lat, e.latlng.lng)).addTo(map).openPopup();
+
+        // $('form').on('submit', function (event) {
+        //   event.preventDefault();
+        // })
+      }
+
+
+      map.on('click', onMapClick);
+
+      console.log(data);
+
+      for (let i = 0; i < data.length; i++) {
+        //let handle = data[i].handle;
+        let avatar = data[i].avatar;
+        let summary = data[i].summary;
+        let name = data[i].name;
+        let url = data[i].url;
+        let image = data[i].img;
+        let category = data[i].category;
+        let html = renderHTML("1", image, summary, url, name);
+        let locationId = data[i].id;
+        let coords = [data[i].latitude, data[i].longitude];
+        locationsArray.push(L.marker(coords).bindPopup(html));
+        L.layerGroup(locationsArray).addTo(map);
+
+      };
+    });
+
+    L.tileLayer(tokenURL, { attribution: attribution, maxZoom: 18})
+    .addTo(map);
+    // the following method takes in an array of points to add to the map view
+
+  });
 
 
 
