@@ -1,29 +1,29 @@
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
-  VALUES (1, 'Waterfront Station',
+  VALUES (41, 'Waterfront Station',
     'Center of downtown transportation!',
     '49.2849163', '-123.1157802', 'Points of Interest', 'www.waterfront.van', '/images/locations/waterfront.jpg',
     1, 1, '2016.08.30');
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
-  VALUES (2, 'Third Beach',
+  VALUES (42, 'Third Beach',
     'the sound of the sea... that everlasting sweet memory...',
     '49.303181', '-123.158833', 'Beaches', 'www.third.beach', '/images/locations/third_beach.jpg',
     1, 1, '2016.08.31');
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
-  VALUES (3, 'Benny''s',
+  VALUES (43, 'Benny''s',
     'A neighbourhood classic. Cozy atmosphere, nice staff, hot & cold drinks.',
     '49.2848816', '-123.1456593', 'Restaurants', 'www.bennys.com', '/images/locations/Benny''s.jpg',
     1, 1, '2016.08.15');
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
-  VALUES (4, 'Vanier Park',
+  VALUES (44, 'Vanier Park',
     'Great venue for Bard on the Beach.',
     '49.2767298', '-123.145843', 'Parks and Nature', 'www.vanier-park.yvr', 'images/locations/VanierPark.jpg',
     1, 1, '2016.08.24');
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
-  VALUES (5, 'Breka Bakery & Cafe',
+  VALUES (45, 'Breka Bakery & Cafe',
     'Awesome place, great pastries, coffee and the staff is always friendly.',
     '49.2251441', '-123.0911615', 'Cafes', 'www.breka.ca', 'images/locations/breka.jpg',
     1, 1, '2016.08.27');
@@ -31,31 +31,31 @@ INSERT INTO locations (id, name, summary, latitude, longitude, category, url, im
 
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
-  VALUES (6, 'Lion''s Gate Bridge',
+  VALUES (46, 'Lion''s Gate Bridge',
     'When there is an accident you may have to wait for hours!',
     '49.306838', '-123.1514809', 'Points of Interest', 'th.gov.bc.ca', '/images/locations/lionsgate.jpg',
     2, 2, '2016.08.28');
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
-  VALUES (7, 'Kits Beach',
+  VALUES (47, 'Kits Beach',
     'You can do anything here! Volleyball, bocce, badminton, picnic etc...',
     '49.2757266', '-123.1563801', 'Beaches', 'www.kitsbeach.net', '/images/locations/kitsBeach.jpg',
     2, 2, '2016.09.03');
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
-  VALUES (8, 'Lucy''s Eastside Diner',
+  VALUES (48, 'Lucy''s Eastside Diner',
     '24-hour joint with a retro interior whipping up clever Canadian noshes & classic cocktails.',
     '49.260887', '-123.1030479', 'Restaurants', 'lucyseastsidediner.com', '/images/locations/lucy.jpg',
     2, 2, '2016.08.05');
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
-  VALUES (9, 'Dude Chilling Park',
+  VALUES (49, 'Dude Chilling Park',
     'Great park in East Van... Also has a Pokemon GO gym & 3 Pokestops',
     '49.2640965', '-123.0986454', 'Parks and Nature', 'covapp.vancouver.ca', 'images/locations/dudeChillingPark.jpg',
     2, 2, '2016.08.24');
 
 INSERT INTO locations (id, name, summary, latitude, longitude, category, url, img, user_id, map_id, date_created)
-  VALUES (10, 'Our Town Cafe',
+  VALUES (50, 'Our Town Cafe',
     'Did you know this place sold wine and beer?  Well you do now.',
     '49.2637785', '-123.1055692', 'Cafes', 'ourtowncafe.com', 'images/locations/ourTown.jpg',
     2, 2, '2016.09.04');

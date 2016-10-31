@@ -658,10 +658,10 @@ $(document).ready(function() {
             $.ajax({
 
                 method: 'post',
-                url: '/maps/' + '1' + '/locations/',
+                url: '/maps/' + '2' + '/locations/',
                 data: $('.popup-new-form').serialize(),
                 success: function (result) {
-
+                location.reload();
                 let locationId = result[0];
 
                   $.get( "api/location/" + locationId, function(data) {
